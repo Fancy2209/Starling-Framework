@@ -16,6 +16,11 @@ package starling.display
     import flash.geom.Rectangle;
     import flash.geom.Vector3D;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.rendering.IndexData;
     import starling.rendering.VertexData;
     import starling.styles.MeshStyle;

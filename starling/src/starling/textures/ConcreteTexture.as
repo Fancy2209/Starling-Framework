@@ -13,11 +13,19 @@ package starling.textures
     import flash.display.Bitmap;
     import flash.display.BitmapData;
     import flash.display3D.textures.TextureBase;
+COMPILE::SWF
+{
     import flash.media.Camera;
+}
     import flash.net.NetStream;
     import flash.system.Capabilities;
     import flash.utils.ByteArray;
     import flash.utils.getQualifiedClassName;
+
+COMPILE::JS 
+{
+    import flash.errors.Error;
+}
 
     import starling.core.Starling;
     import starling.core.starling_internal;
@@ -150,11 +158,14 @@ package starling.textures
             attachVideo("NetStream", netStream, onComplete);
         }
 
+COMPILE::SWF 
+{
         /** Specifies a video stream from a camera to be rendered within the texture. */
         public function attachCamera(camera:Camera, onComplete:Function=null):void
         {
             attachVideo("Camera", camera, onComplete);
         }
+}
 
         /** @private */
         internal function attachVideo(type:String, attachment:Object, onComplete:Function=null):void

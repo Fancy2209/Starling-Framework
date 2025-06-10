@@ -1,13 +1,24 @@
 {
 	"type": "lib",
-	"config": "air",
+	"config": "royale",
 	"compilerOptions": {
+		"targets": [
+			"SWF",
+			"JS"
+		],
 		"output": "bin-debug/starling.swc",
 		"source-path": [
 			"src"
 		],
+		"js-external-library-path": [
+			"libs/openfl.swc"
+		],
 		"include-sources": [
 			"src"
 		]
-	}
+	},
+	"additionalOptions": [
+		"-js-getter-prefix=get_",
+		"-js-setter-prefix=set_"
+	]
 }

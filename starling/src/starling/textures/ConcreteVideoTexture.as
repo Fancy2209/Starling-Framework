@@ -17,6 +17,7 @@ package starling.textures
 
     import starling.core.Starling;
     import starling.utils.execute;
+    import org.apache.royale.textLayout.compose.SWFContext;
 
     /** @private
      *
@@ -46,7 +47,10 @@ package starling.textures
 
             if (!_disposed)
             {
+            COMPILE::SWF
+            {
                 videoBase.attachCamera(null);
+            }
                 videoBase.attachNetStream(null);
                 _disposed = true;
             }

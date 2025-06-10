@@ -16,6 +16,11 @@ package starling.utils
     import flash.geom.Rectangle;
     import flash.geom.Vector3D;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.errors.AbstractClassError;
 
     /** A utility class containing methods related to the Rectangle class. */

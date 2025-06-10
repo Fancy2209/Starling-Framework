@@ -20,11 +20,19 @@ package starling.textures
     import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
+COMPILE::SWF 
+{
     import flash.media.Camera;
+}
     import flash.net.NetStream;
     import flash.system.Capabilities;
     import flash.utils.ByteArray;
     import flash.utils.getQualifiedClassName;
+
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
 
     import starling.core.Starling;
     import starling.errors.AbstractClassError;
@@ -426,6 +434,8 @@ package starling.textures
             return fromVideoAttachment("NetStream", stream, scale, onComplete);
         }
 
+COMPILE::SWF
+{
         /** Creates a video texture from a camera. Beware that the texture must not be used
          *  before the 'onComplete' callback has been executed; until then, it will have a size
          *  of zero pixels.
@@ -450,6 +460,7 @@ package starling.textures
         {
             return fromVideoAttachment("Camera", camera, scale, onComplete);
         }
+}
 
         private static function fromVideoAttachment(type:String, attachment:Object,
                                                     scale:Number, onComplete:Function):Texture

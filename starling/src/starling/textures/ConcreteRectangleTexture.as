@@ -17,6 +17,11 @@ package starling.textures
     import flash.events.Event;
     import flash.utils.setTimeout;
 
+COMPILE::JS 
+{
+    import flash.errors.Error;
+}
+
     import starling.core.Starling;
     import starling.utils.execute;
 

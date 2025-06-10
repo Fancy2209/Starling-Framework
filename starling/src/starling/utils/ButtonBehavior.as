@@ -5,6 +5,11 @@ package starling.utils
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.display.ButtonState;
     import starling.display.DisplayObject;
     import starling.events.Event;

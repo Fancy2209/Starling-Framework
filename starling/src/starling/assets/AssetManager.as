@@ -7,9 +7,13 @@ package starling.assets
     import flash.system.System;
     import flash.utils.ByteArray;
     import flash.utils.Dictionary;
-    import flash.utils.describeType;
     import flash.utils.getQualifiedClassName;
     import flash.utils.setTimeout;
+
+COMPILE::SWF
+{
+    import flash.utils.describeType;
+}
 
     import starling.core.Starling;
     import starling.events.Event;
@@ -246,33 +250,36 @@ package starling.assets
                 }
                 else if (asset is Class)
                 {
-                    var typeXml:XML = describeType(asset);
-                    var childNode:XML;
-                    var url:String;
-                    var mimeType:String
-
-                    if (_verbose)
-                        log("Looking for static embedded assets in '" +
-                            (typeXml.@name).split("::").pop() + "'");
-
-                    function processNode(node:XML):void
+                    COMPILE::SWF
                     {
-                        // look for URL & mime type in the Embed metadata
-                        url = findUrlInVariableMetadata(node);
-                        mimeType = findMimeTypeInVariableMetadata(node);
+                        var typeXml:XML = describeType(asset);
+                        var childNode:XML;
+                        var url:String;
+                        var mimeType:String
 
-                        // log found properties
-                        if (_verbose && (url || mimeType))
-                            log("Found class with embed information. URL: '" + url + "', mimeType: '" + mimeType + "'");
+                        if (_verbose)
+                            log("Looking for static embedded assets in '" +
+                                (typeXml.@name).split("::").pop() + "'");
 
-                        enqueueSingle(asset[node.@name], node.@name, null, getExtensionFromUrl(url), mimeType);
+                        function processNode(node:XML):void
+                        {
+                            // look for URL & mime type in the Embed metadata
+                            url = findUrlInVariableMetadata(node);
+                            mimeType = findMimeTypeInVariableMetadata(node);
+
+                            // log found properties
+                            if (_verbose && (url || mimeType))
+                                log("Found class with embed information. URL: '" + url + "', mimeType: '" + mimeType + "'");
+
+                            enqueueSingle(asset[node.@name], node.@name, null, getExtensionFromUrl(url), mimeType);
+                        }
+
+                        for each (childNode in typeXml.constant.(@type == "Class"))
+                            processNode(childNode);
+
+                        for each (childNode in typeXml.variable.(@type == "Class"))
+                            processNode(childNode);
                     }
-
-                    for each (childNode in typeXml.constant.(@type == "Class"))
-                        processNode(childNode);
-
-                    for each (childNode in typeXml.variable.(@type == "Class"))
-                        processNode(childNode);
                 }
                 else if (getQualifiedClassName(asset) == "flash.filesystem::File")
                 {
@@ -1001,7 +1008,7 @@ package starling.assets
          */
         protected function matchRegEx(url:String):Array
         {
-            return NAME_REGEX.exec(decodeURIComponent(url));
+            return NAME_REGEX.exec(decodeURIComponent(url)) as Array;
         }
 
         /** Disposes the given asset. ByteArrays are cleared, XMLs are disposed using
@@ -1010,7 +1017,7 @@ package starling.assets
         protected function disposeAsset(asset:Object):void
         {
             if (asset is ByteArray) (asset as ByteArray).clear();
-            if (asset is XML) System.disposeXML(asset as XML);
+            if (asset is XML) asset = null;//System.disposeXML(asset as XML);
             if ("dispose" in asset) asset["dispose"]();
         }
 
@@ -1085,6 +1092,10 @@ package starling.assets
 }
 
 import starling.assets.AssetManager;
+COMPILE::JS
+{
+import openfl.errors.ArgumentError;
+}
 
 class AssetPostProcessor
 {

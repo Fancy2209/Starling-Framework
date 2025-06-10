@@ -12,6 +12,11 @@ package starling.text
 {
     import flash.text.TextFormat;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.events.Event;
     import starling.events.EventDispatcher;
     import starling.utils.Align;

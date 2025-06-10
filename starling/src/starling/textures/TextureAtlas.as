@@ -14,6 +14,11 @@ package starling.textures
     import flash.geom.Rectangle;
     import flash.utils.Dictionary;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.display.Image;
     import starling.utils.StringUtil;
 

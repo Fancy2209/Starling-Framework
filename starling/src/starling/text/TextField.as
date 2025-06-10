@@ -14,8 +14,15 @@ package starling.text
     import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
+COMPILE::SWF {
     import flash.text.StyleSheet;
+}
     import flash.utils.Dictionary;
+
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
 
     import starling.core.Starling;
     import starling.display.DisplayObject;

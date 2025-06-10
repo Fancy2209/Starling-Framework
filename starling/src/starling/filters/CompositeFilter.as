@@ -141,6 +141,11 @@ package starling.filters
 import flash.display3D.Context3D;
 import flash.display3D.Context3DProgramType;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
 import starling.filters.CompositeMode;
 import starling.rendering.FilterEffect;
 import starling.rendering.Program;

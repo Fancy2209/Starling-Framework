@@ -21,6 +21,12 @@ package starling.utils
     import flash.events.Event;
     import flash.utils.setTimeout;
 
+COMPILE::JS 
+{
+    import flash.errors.Error;
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.errors.AbstractClassError;
     import starling.textures.Texture;

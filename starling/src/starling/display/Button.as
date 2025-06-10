@@ -13,6 +13,11 @@ package starling.display
     import flash.geom.Point;
     import flash.geom.Rectangle;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.styles.MeshStyle;
     import starling.text.TextField;
     import starling.text.TextFormat;

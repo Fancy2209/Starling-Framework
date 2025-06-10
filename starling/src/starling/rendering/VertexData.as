@@ -21,6 +21,11 @@ package starling.rendering
     import flash.utils.ByteArray;
     import flash.utils.Endian;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.errors.MissingContextError;
     import starling.styles.MeshStyle;

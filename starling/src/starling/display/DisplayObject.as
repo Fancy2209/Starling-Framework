@@ -22,6 +22,11 @@ package starling.display
     import flash.ui.MouseCursor;
     import flash.utils.getQualifiedClassName;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.core.starling_internal;
     import starling.errors.AbstractClassError;

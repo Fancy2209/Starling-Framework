@@ -2,6 +2,11 @@ package starling.animation
 {
     import starling.errors.AbstractClassError;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     /** Provides Cubic Bezier Curve easing, which generalizes easing functions
      *  via a four-point bezier curve. That way, you can easily create custom easing functions
      *  that will be picked up by Starling's Tween class later. To set up your bezier curves,

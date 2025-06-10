@@ -13,6 +13,11 @@ package starling.rendering
     import flash.display3D.VertexBuffer3D;
     import flash.utils.Dictionary;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.utils.StringUtil;
 

@@ -16,6 +16,11 @@ package starling.display
     import flash.system.Capabilities;
     import flash.utils.getQualifiedClassName;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.starling_internal;
     import starling.errors.AbstractClassError;
     import starling.events.Event;

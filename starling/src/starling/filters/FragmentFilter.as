@@ -15,6 +15,11 @@ package starling.filters
     import flash.geom.Matrix3D;
     import flash.geom.Rectangle;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.core.starling_internal;
     import starling.display.DisplayObject;

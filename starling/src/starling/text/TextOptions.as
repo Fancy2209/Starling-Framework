@@ -10,7 +10,10 @@
 
 package starling.text
 {
+COMPILE::SWF 
+{
     import flash.text.StyleSheet;
+}
 
     import starling.core.Starling;
     import starling.events.Event;

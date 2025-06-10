@@ -14,6 +14,11 @@ package starling.display
     import flash.media.Sound;
     import flash.media.SoundTransform;
 
+COMPILE::JS 
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.animation.IAnimatable;
     import starling.events.Event;
     import starling.textures.Texture;

@@ -36,6 +36,11 @@ package starling.core
     import flash.utils.getTimer;
     import flash.utils.setTimeout;
 
+COMPILE::JS
+{
+    import flash.errors.ArgumentError;
+}
+
     import starling.animation.Juggler;
     import starling.display.DisplayObject;
     import starling.display.Stage;
@@ -347,7 +352,10 @@ package starling.core
             _nativeStage.removeEventListener(KeyboardEvent.KEY_UP, onKey, false);
             _nativeStage.removeEventListener(Event.RESIZE, onResize, false);
             _nativeStage.removeEventListener(Event.MOUSE_LEAVE, onMouseLeave, false);
+        COMPILE::SWF
+        {
             _nativeStage.removeEventListener(Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
+        }
             _nativeStage.removeChild(_nativeOverlay);
 
             stage3D.removeEventListener(Event.CONTEXT3D_CREATE, onContextCreated, false);
@@ -498,8 +506,10 @@ package starling.core
 
                 var contentScaleFactor:Number =
                         _supportHighResolutions ? _nativeStage.contentsScaleFactor : 1.0;
-
+            COMPILE::SWF
+            {
                 if (_supportBrowserZoom) contentScaleFactor *= _nativeStage.browserZoomFactor;
+            }
 
                 _painter.configureBackBuffer(_clippedViewPort, contentScaleFactor,
                     _antiAliasing, true, _supportBrowserZoom);
@@ -693,11 +703,14 @@ package starling.core
             }
         }
 
+    COMPILE::SWF
+    {
         private function onBrowserZoomChange(event:Event):void
         {
             _painter.refreshBackBufferSize(
                 _nativeStage.contentsScaleFactor * _nativeStage.browserZoomFactor);
         }
+    }
 
         private function onMouseLeave(event:Event):void
         {
@@ -1099,11 +1112,13 @@ package starling.core
             {
                 _supportBrowserZoom = value;
                 if (contextValid) updateViewPort(true);
-
+            COMPILE::SWF 
+            {
                 if (value) _nativeStage.addEventListener(
                     Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false, 0, true);
                 else _nativeStage.removeEventListener(
                     Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
+            }
             }
         }
 

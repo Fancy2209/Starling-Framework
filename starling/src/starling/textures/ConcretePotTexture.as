@@ -20,6 +20,12 @@ package starling.textures
     import flash.utils.ByteArray;
     import flash.utils.setTimeout;
 
+COMPILE::JS 
+{
+    import flash.errors.Error;
+    import flash.errors.ArgumentError;
+}
+
     import starling.core.Starling;
     import starling.utils.MathUtil;
     import starling.utils.execute;
