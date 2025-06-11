@@ -45,6 +45,8 @@ package starling.utils
             sPlatform = Capabilities.version.substr(0, 3);
             sVersion = Capabilities.version.substr(4);
 
+            COMPILE::SWF
+            {
             try
             {
                 var nativeAppClass:Object = getDefinitionByName("flash.desktop::NativeApplication");
@@ -61,6 +63,11 @@ package starling.utils
                 sAIR = true;
             }
             catch (e:Error)
+            {
+                sAIR = false;
+            }
+            }
+            COMPILE::JS
             {
                 sAIR = false;
             }

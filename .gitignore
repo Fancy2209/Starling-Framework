@@ -13,6 +13,7 @@ bin-debug/
 bin-release/
 starling/doc/html/
 starling/bin/starling.swc
+starling/bin/starling-royale.swc
 tests/libs/
 out/
 
@@ -55,3 +56,7 @@ starling/build/apm/*.airpackage
 
 # ANE dir
 samples/scaffold_mobile/lib/
+
+# Royale
+index.html
+*.js

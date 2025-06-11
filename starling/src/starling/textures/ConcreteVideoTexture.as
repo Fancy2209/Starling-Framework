@@ -17,7 +17,6 @@ package starling.textures
 
     import starling.core.Starling;
     import starling.utils.execute;
-    import org.apache.royale.textLayout.compose.SWFContext;
 
     /** @private
      *

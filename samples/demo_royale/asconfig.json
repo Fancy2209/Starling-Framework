@@ -1,36 +1,30 @@
 {
-	"type": "lib",
 	"config": "royale",
 	"compilerOptions": {
 		"targets": [
-			"SWF",
 			"JS"
 		],
-		"output": "bin/starling-royale.swc",
-		"source-path": [
-			"src"
-		],
 		"js-external-library-path": [
-			"libs/openfl.swc"
+			"../../starling/libs/openfl.swc"
 		],
+		"html-template": "index.template.html",
 		"swf-external-library-path": [
 			"${royalelib}/../js/libs/js.swc",
 			"${royalelib}/../js/libs/GCL.swc",
 			"${royalelib}/js/libs/LanguageJS.swc",
 			"${royalelib}/js/libs/CoreJS.swc",
 			"${royalelib}/js/libs/XMLJS.swc",
-			"libs/openfl.swc"
+			"../../starling/libs/openfl.swc"
 		],
 		"define": [
 			{"name": "COMPILE::SWF", "value": false},
 			{"name": "COMPILE::JS",  "value": true }
 		],
-		"include-sources": [
-			"src"
+		"source-path": [
+			"src",
+			"../../starling/src"
 		]
 	},
-	"additionalOptions": [
-		"-js-getter-prefix=get_",
-		"-js-setter-prefix=set_"
-	]
+	"copySourcePathAssets": true,
+	"mainClass": "Main"
 }
