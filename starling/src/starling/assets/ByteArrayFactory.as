@@ -1,6 +1,14 @@
 package starling.assets
 {
-    import flash.utils.ByteArray;
+COMPILE::SWF
+{
+    import openfl.utils.ByteArray;
+}
+
+COMPILE::JS
+{
+    import openfl.utils.ByteArray;
+}
 
     /** This AssetFactory forwards ByteArrays to the AssetManager. It's the fallback when
      *  no other factory can handle an asset reference (default priority: -100). */

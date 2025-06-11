@@ -10,7 +10,16 @@
 
 package starling.styles
 {
-    import flash.geom.Matrix;
+
+COMPILE::SWF
+{
+    import openfl.geom.Matrix;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Matrix;
+}
 
     import starling.core.Starling;
     import starling.display.Mesh;
@@ -501,8 +510,17 @@ package starling.styles
     }
 }
 
-import flash.display3D.Context3D;
-import flash.display3D.Context3DProgramType;
+COMPILE::SWF
+{
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+}
+
+COMPILE::JS
+{
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+}
 
 import starling.rendering.MeshEffect;
 import starling.rendering.Program;

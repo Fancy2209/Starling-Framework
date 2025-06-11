@@ -10,28 +10,42 @@
 
 package starling.textures
 {
-    import flash.display.Bitmap;
-    import flash.display.BitmapData;
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DTextureFormat;
-    import flash.display3D.textures.RectangleTexture;
-    import flash.display3D.textures.TextureBase;
-    import flash.display3D.textures.VideoTexture;
-    import flash.geom.Matrix;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
 COMPILE::SWF 
 {
-    import flash.media.Camera;
+    import openfl.display.Bitmap;
+    import openfl.display.BitmapData;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.display3D.textures.RectangleTexture;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.display3D.textures.VideoTexture;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.media.Camera;
+    import openfl.net.NetStream;
+    import openfl.system.Capabilities;
+    import openfl.utils.ByteArray;
+    import openfl.utils.getQualifiedClassName;
 }
-    import flash.net.NetStream;
-    import flash.system.Capabilities;
-    import flash.utils.ByteArray;
-    import flash.utils.getQualifiedClassName;
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.display.Bitmap;
+    import openfl.display.BitmapData;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.display3D.textures.RectangleTexture;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.display3D.textures.VideoTexture;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.net.NetStream;
+    import openfl.system.Capabilities;
+    import openfl.utils.ByteArray;
+    import org.apache.royale.reflection.getQualifiedClassName;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;
@@ -57,7 +71,7 @@ COMPILE::JS
      *  <strong>Texture Formats</strong>
      *
      *  <p>Since textures can be created from a "BitmapData" object, Starling supports any bitmap
-     *  format that is supported by Flash. And since you can render any Flash display object into
+     *  format that is supported by openfl. And since you can render any Flash display object into
      *  a BitmapData object, you can use this to display non-Starling content in Starling - e.g.
      *  Shape objects.</p>
      *
@@ -142,7 +156,8 @@ COMPILE::JS
         public function Texture()
         {
             if (Capabilities.isDebugger &&
-                getQualifiedClassName(this) == "starling.textures::Texture")
+                (getQualifiedClassName(this) == "starling.textures::Texture" ||
+                 getQualifiedClassName(this) == "starling.textures.Texture"))
             {
                 throw new AbstractClassError();
             }
@@ -205,9 +220,9 @@ COMPILE::JS
         {
             if (options == null) options = sDefaultOptions;
 
-            if (base is flash.display3D.textures.Texture)
+            if (base is openfl.display3D.textures.Texture)
             {
-                return new ConcretePotTexture(base as flash.display3D.textures.Texture,
+                return new ConcretePotTexture(base as openfl.display3D.textures.Texture,
                         options.format, width, height, options.mipMapping,
                         options.premultipliedAlpha, options.optimizeForRenderToTexture,
                         options.scale);
@@ -381,7 +396,7 @@ COMPILE::JS
             if (context == null) throw new MissingContextError();
 
             var atfData:AtfData = new AtfData(data);
-            var nativeTexture:flash.display3D.textures.Texture = context.createTexture(
+            var nativeTexture:openfl.display3D.textures.Texture = context.createTexture(
                 atfData.width, atfData.height, atfData.format, false);
             var concreteTexture:ConcreteTexture = new ConcretePotTexture(nativeTexture,
                 atfData.format, atfData.width, atfData.height, useMipMaps && atfData.numTextures > 1,
@@ -573,7 +588,7 @@ COMPILE::SWF
                         actualWidth, actualHeight, format, optimizeForRenderToTexture);
 
                 concreteTexture = new ConcretePotTexture(
-                        nativeTexture as flash.display3D.textures.Texture, format,
+                        nativeTexture as openfl.display3D.textures.Texture, format,
                         actualWidth, actualHeight, mipMapping, premultipliedAlpha,
                         optimizeForRenderToTexture, scale);
             }

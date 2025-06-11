@@ -10,13 +10,19 @@
 
 package starling.display
 {
-    import flash.errors.IllegalOperationError;
-    import flash.media.Sound;
-    import flash.media.SoundTransform;
+COMPILE::SWF 
+{
+    import openfl.errors.IllegalOperationError;
+    import openfl.media.Sound;
+    import openfl.media.SoundTransform;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.IllegalOperationError;
+    import openfl.media.Sound;
+    import openfl.media.SoundTransform;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.animation.IAnimatable;
@@ -442,8 +448,17 @@ COMPILE::JS
     }
 }
 
-import flash.media.Sound;
-import flash.media.SoundTransform;
+COMPILE::SWF
+{
+import openfl.media.Sound;
+import openfl.media.SoundTransform;
+}
+
+COMPILE::JS
+{
+import openfl.media.Sound;
+import openfl.media.SoundTransform;
+}
 
 import starling.display.MovieClip;
 import starling.textures.Texture;

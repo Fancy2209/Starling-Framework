@@ -10,8 +10,17 @@
 
 package starling.core
 {
+COMPILE::SWF
+{
     import flash.geom.Rectangle;
     import flash.system.System;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Rectangle;
+    import openfl.system.System;
+}
 
     import starling.display.DisplayObject;
     import starling.display.Quad;

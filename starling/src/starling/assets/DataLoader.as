@@ -1,15 +1,33 @@
 package starling.assets
 {
-    import flash.events.ErrorEvent;
-    import flash.events.Event;
-    import flash.events.HTTPStatusEvent;
-    import flash.events.IOErrorEvent;
-    import flash.events.ProgressEvent;
-    import flash.events.SecurityErrorEvent;
-    import flash.net.URLLoader;
-    import flash.net.URLLoaderDataFormat;
-    import flash.net.URLRequest;
-    import flash.utils.Dictionary;
+
+COMPILE::SWF
+{
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.events.HTTPStatusEvent;
+    import openfl.events.IOErrorEvent;
+    import openfl.events.ProgressEvent;
+    import openfl.events.SecurityErrorEvent;
+    import openfl.net.URLLoader;
+    import openfl.net.URLLoaderDataFormat;
+    import openfl.net.URLRequest;
+    import openfl.utils.Dictionary;
+}
+
+COMPILE::JS
+{
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.events.HTTPStatusEvent;
+    import openfl.events.IOErrorEvent;
+    import openfl.events.ProgressEvent;
+    import openfl.events.SecurityErrorEvent;
+    import openfl.net.URLLoader;
+    import openfl.net.URLLoaderDataFormat;
+    import openfl.net.URLRequest;
+    import openfl.utils.Dictionary;
+}
 
     import starling.utils.execute;
 

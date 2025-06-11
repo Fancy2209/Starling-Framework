@@ -10,12 +10,25 @@
 
 package starling.display
 {
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix;
-    import flash.geom.Matrix3D;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.geom.Vector3D;
+COMPILE::SWF
+{
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+}
+
+COMPILE::JS
+{
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+}
 
     import starling.core.Starling;
     import starling.core.starling_internal;
@@ -35,7 +48,7 @@ package starling.display
      * 
      *  <p>This class represents the Starling version of the stage. Don't confuse it with its 
      *  Flash equivalent: while the latter contains objects of the type 
-     *  <code>flash.display.DisplayObject</code>, the Starling stage contains only objects of the
+     *  <code>openfl.display.DisplayObject</code>, the Starling stage contains only objects of the
      *  type <code>starling.display.DisplayObject</code>. Those classes are not compatible, and 
      *  you cannot exchange one type with the other.</p>
      * 

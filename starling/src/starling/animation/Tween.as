@@ -18,7 +18,7 @@ package starling.animation
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     /** A Tween animates numeric properties of objects. It uses different transition functions

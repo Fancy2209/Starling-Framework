@@ -10,20 +10,28 @@
 
 package starling.textures
 {
-    import flash.display.BitmapData;
-    import flash.display3D.textures.TextureBase;
-    import flash.events.ErrorEvent;
-    import flash.events.Event;
-    import flash.geom.Matrix;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.utils.ByteArray;
-    import flash.utils.setTimeout;
+    import openfl.display.BitmapData;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.utils.ByteArray;
+//    import openfl.utils.setTimeout;
 
 COMPILE::JS 
 {
-    import flash.errors.Error;
-    import flash.errors.ArgumentError;
+    import openfl.display.BitmapData;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.utils.ByteArray;
+    import openfl.errors.Error;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;
@@ -44,7 +52,8 @@ COMPILE::JS
         private static var sAsyncUploadEnabled:Boolean = false;
 
         /** Creates a new instance with the given parameters. */
-        public function ConcretePotTexture(base:flash.display3D.textures.Texture, format:String,
+
+        public function ConcretePotTexture(base:openfl.display3D.textures.Texture, format:String,
                                            width:int, height:int, mipMapping:Boolean,
                                            premultipliedAlpha:Boolean,
                                            optimizedForRenderTexture:Boolean=false, scale:Number=1)
@@ -188,9 +197,9 @@ COMPILE::JS
             _textureReadyCallback = null;
         }
 
-        private function get potBase():flash.display3D.textures.Texture
+        private function get potBase():openfl.display3D.textures.Texture
         {
-            return base as flash.display3D.textures.Texture;
+            return base as openfl.display3D.textures.Texture;
         }
 
         /** @private */

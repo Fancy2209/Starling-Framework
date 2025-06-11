@@ -10,7 +10,15 @@
 
 package starling.events
 {
-    import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+    import openfl.utils.getQualifiedClassName;
+}
+
+COMPILE::JS
+{
+    import org.apache.royale.reflection.getQualifiedClassName;
+}
 
     import starling.core.starling_internal;
     import starling.utils.StringUtil;
@@ -131,8 +139,16 @@ package starling.events
         /** Returns a description of the event, containing type and bubble information. */
         public function toString():String
         {
+        COMPILE::SWF
+        {
             return StringUtil.format("[{0} type=\"{1}\" bubbles={2}]",
                 getQualifiedClassName(this).split("::").pop(), _type, _bubbles);
+        }
+        COMPILE::JS
+        {
+            return StringUtil.format("[{0} type=\"{1}\" bubbles={2}]",
+                getQualifiedClassName(this).split(".").pop(), _type, _bubbles);
+        }
         }
 
         /** Indicates if event will bubble. */

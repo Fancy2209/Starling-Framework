@@ -10,7 +10,15 @@
 
 package starling.rendering
 {
-    import flash.geom.Matrix;
+COMPILE::SWF
+{
+    import openfl.geom.Matrix;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Matrix;
+}
 
     import starling.display.Mesh;
     import starling.display.MeshBatch;
@@ -178,7 +186,15 @@ package starling.rendering
     }
 }
 
-import flash.utils.Dictionary;
+COMPILE::SWF
+{
+import openfl.utils.Dictionary;
+}
+
+COMPILE::JS
+{
+import openfl.utils.Dictionary;
+}
 
 import starling.display.MeshBatch;
 

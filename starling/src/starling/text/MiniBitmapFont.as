@@ -10,10 +10,10 @@
 
 package starling.text
 {
-    import flash.display.BitmapData;
-    import flash.display3D.Context3DTextureFormat;
-    import flash.geom.Rectangle;
-    import flash.utils.ByteArray;
+    import openfl.display.BitmapData;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.geom.Rectangle;
+    import openfl.utils.ByteArray;
 
     import starling.textures.Texture;
 

@@ -10,20 +10,33 @@
 
 package starling.rendering
 {
-    import flash.display3D.Context3D;
-    import flash.display3D.VertexBuffer3D;
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix;
-    import flash.geom.Matrix3D;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.geom.Vector3D;
-    import flash.utils.ByteArray;
-    import flash.utils.Endian;
+COMPILE::SWF
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.VertexBuffer3D;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Endian;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.VertexBuffer3D;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Endian;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;

@@ -10,10 +10,10 @@
 
 package starling.textures
 {
-    import flash.display3D.Context3DTextureFormat;
-    import flash.display3D.textures.TextureBase;
-    import flash.display3D.textures.VideoTexture;
-    import flash.events.Event;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.display3D.textures.VideoTexture;
+    import openfl.events.Event;
 
     import starling.core.Starling;
     import starling.utils.execute;
@@ -28,7 +28,7 @@ package starling.textures
         private var _disposed:Boolean;
 
         /** Creates a new instance with the given parameters.
-         *  <code>base</code> must be of type <code>flash.display3D.textures.VideoTexture</code>.
+         *  <code>base</code> must be of type <code>openfl.display3D.textures.VideoTexture</code>.
          */
         public function ConcreteVideoTexture(base:VideoTexture, scale:Number=1)
         {

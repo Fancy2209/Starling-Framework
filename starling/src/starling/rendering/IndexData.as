@@ -10,12 +10,24 @@
 
 package starling.rendering
 {
-    import flash.display3D.Context3D;
-    import flash.display3D.IndexBuffer3D;
-    import flash.errors.EOFError;
-    import flash.utils.ByteArray;
-    import flash.utils.Endian;
+    
+COMPILE::SWF
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.IndexBuffer3D;
+    import openfl.errors.EOFError;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Endian;
+}
 
+COMPILE::JS
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.IndexBuffer3D;
+    import openfl.errors.EOFError;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Endian;
+}
     import starling.core.Starling;
     import starling.errors.MissingContextError;
     import starling.utils.StringUtil;

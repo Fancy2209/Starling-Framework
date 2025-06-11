@@ -10,10 +10,19 @@
 
 package starling.filters
 {
-    import flash.display3D.Context3DProfile;
-    import flash.geom.Matrix3D;
-    import flash.geom.Rectangle;
+COMPILE::SWF
+{
+    import openfl.display3D.Context3DProfile;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+}
 
+COMPILE::JS
+{
+    import openfl.display3D.Context3DProfile;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+}
     import starling.core.Starling;
     import starling.core.starling_internal;
     import starling.display.DisplayObject;

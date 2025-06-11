@@ -10,8 +10,18 @@
 
 package starling.styles
 {
-    import flash.geom.Matrix;
-    import flash.geom.Point;
+
+COMPILE::SWF
+{
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+}
 
     import starling.core.Starling;
     import starling.core.starling_internal;

@@ -1,5 +1,8 @@
 package
 {
+
+COMPILE::SWF
+{
     import flash.net.URLRequest;
     import flash.display.Bitmap;
     import flash.display.Loader;
@@ -9,6 +12,19 @@ package
     import flash.system.Capabilities;
     import flash.system.System;
     import flash.utils.setTimeout;
+}
+
+COMPILE::JS
+{
+    import openfl.net.URLRequest;
+    import openfl.display.Bitmap;
+    import openfl.display.Loader;
+    import openfl.display.Sprite;
+    import openfl.events.Event;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
+    import openfl.system.System;
+}
 
     import starling.assets.AssetManager;
     import starling.core.Starling;
@@ -117,12 +133,23 @@ package
             _background.scaleY = 1.0 / scaleFactor;
             _starling.nativeOverlay.addChild(_background);
 
+        COMPILE::SWF
+        {
             _background.contentLoaderInfo.addEventListener(flash.events.Event.COMPLETE,
                 function(e:Object):void
                 {
                     (_background.content as Bitmap).smoothing = true;
                 });
+        }
 
+        COMPILE::JS
+        {
+            _background.contentLoaderInfo.addEventListener(openfl.events.Event.COMPLETE,
+                function(e:Object):void
+                {
+                    (_background.content as Bitmap).smoothing = true;
+                });
+        }
             // While the assets are loaded, we will display a progress bar.
 
             _progressBar = new ProgressBar(175, 20);

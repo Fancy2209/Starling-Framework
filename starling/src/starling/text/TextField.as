@@ -10,18 +10,25 @@
 
 package starling.text
 {
-    import flash.display3D.Context3DTextureFormat;
-    import flash.geom.Matrix;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-COMPILE::SWF {
-    import flash.text.StyleSheet;
-}
-    import flash.utils.Dictionary;
 
+COMPILE::SWF 
+{
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.text.StyleSheet;
+    import openfl.utils.Dictionary;
+}
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.text.StyleSheet;
+    import openfl.utils.Dictionary;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;

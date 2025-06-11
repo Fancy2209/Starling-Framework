@@ -10,14 +10,14 @@
 
 package starling.rendering
 {
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DProgramType;
-    import flash.display3D.IndexBuffer3D;
-    import flash.display3D.VertexBuffer3D;
-    import flash.events.Event;
-    import flash.geom.Matrix3D;
-    import flash.utils.Dictionary;
-    import flash.utils.getQualifiedClassName;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProgramType;
+    import openfl.display3D.IndexBuffer3D;
+    import openfl.display3D.VertexBuffer3D;
+    import openfl.events.Event;
+    import openfl.geom.Matrix3D;
+    import openfl.utils.Dictionary;
+    import org.apache.royale.reflection.getQualifiedClassName;
 
     import starling.core.Starling;
     import starling.errors.MissingContextError;

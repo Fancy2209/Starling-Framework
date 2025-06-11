@@ -1,18 +1,29 @@
 package starling.assets
 {
-    import flash.media.Sound;
-    import flash.media.SoundChannel;
-    import flash.media.SoundTransform;
-    import flash.net.URLRequest;
-    import flash.system.System;
-    import flash.utils.ByteArray;
-    import flash.utils.Dictionary;
-    import flash.utils.getQualifiedClassName;
-    import flash.utils.setTimeout;
 
 COMPILE::SWF
 {
-    import flash.utils.describeType;
+    import openfl.media.Sound;
+    import openfl.media.SoundChannel;
+    import openfl.media.SoundTransform;
+    import openfl.net.URLRequest;
+    import openfl.system.System;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Dictionary;
+    import openfl.utils.getQualifiedClassName;
+    import openfl.utils.setTimeout;
+    import openfl.utils.describeType;
+}
+
+COMPILE::JS
+{
+    import openfl.media.Sound;
+    import openfl.media.SoundChannel;
+    import openfl.media.SoundTransform;
+    import openfl.net.URLRequest;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Dictionary;
+    import org.apache.royale.reflection.getQualifiedClassName;
 }
 
     import starling.core.Starling;
@@ -281,7 +292,8 @@ COMPILE::SWF
                             processNode(childNode);
                     }
                 }
-                else if (getQualifiedClassName(asset) == "flash.filesystem::File")
+                else if (getQualifiedClassName(asset) == "openfl.filesystem::File" ||
+                         getQualifiedClassName(asset) == "openfl.filesystem.File")
                 {
                     if (!asset["exists"])
                     {

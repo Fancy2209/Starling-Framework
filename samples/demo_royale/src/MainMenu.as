@@ -1,7 +1,7 @@
 package
 {
-    import flash.utils.getQualifiedClassName;
-
+    import org.apache.royale.reflection.getQualifiedClassName;
+ 
     import scenes.AnimationScene;
     import scenes.BenchmarkScene;
     import scenes.BlendModeScene;

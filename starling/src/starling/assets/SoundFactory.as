@@ -1,7 +1,16 @@
 package starling.assets
 {
-    import flash.media.Sound;
-    import flash.utils.ByteArray;
+COMPILE::SWF
+{
+    import openfl.media.Sound;
+    import openfl.utils.ByteArray;
+}
+
+COMPILE::JS
+{
+    import openfl.media.Sound;
+    import openfl.utils.ByteArray;
+}
 
     import starling.utils.ByteArrayUtil;
 

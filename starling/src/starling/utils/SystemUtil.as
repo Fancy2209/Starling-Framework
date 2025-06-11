@@ -10,6 +10,8 @@
 
 package starling.utils
 {
+COMPILE::SWF
+{
     import flash.display3D.Context3D;
     import flash.events.Event;
     import flash.events.EventDispatcher;
@@ -17,7 +19,18 @@ package starling.utils
     import flash.text.Font;
     import flash.text.FontStyle;
     import flash.utils.getDefinitionByName;
+}
 
+COMPILE::JS
+{
+    import openfl.display3D.Context3D;
+    import openfl.events.Event;
+    import openfl.events.EventDispatcher;
+    import openfl.system.Capabilities;
+    import openfl.text.Font;
+    import openfl.text.FontStyle;
+    import org.apache.royale.reflection.getDefinitionByName;
+}
     import starling.errors.AbstractClassError;
 
     /** A utility class with methods related to the current platform and runtime. */
@@ -49,7 +62,7 @@ package starling.utils
             {
             try
             {
-                var nativeAppClass:Object = getDefinitionByName("flash.desktop::NativeApplication");
+                var nativeAppClass:Object = getDefinitionByName("openfl.desktop::NativeApplication");
                 var nativeApp:EventDispatcher = nativeAppClass["nativeApplication"] as EventDispatcher;
 
                 nativeApp.addEventListener(Event.ACTIVATE, onActivate, false, 0, true);

@@ -10,18 +10,37 @@
 
 package starling.rendering
 {
-    import flash.display.Stage3D;
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DCompareMode;
-    import flash.display3D.Context3DStencilAction;
-    import flash.display3D.Context3DTriangleFace;
-    import flash.display3D.textures.TextureBase;
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix;
-    import flash.geom.Matrix3D;
-    import flash.geom.Rectangle;
-    import flash.geom.Vector3D;
-    import flash.utils.Dictionary;
+COMPILE::SWF
+{
+    import openfl.display.Stage3D;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DCompareMode;
+    import openfl.display3D.Context3DStencilAction;
+    import openfl.display3D.Context3DTriangleFace;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.utils.Dictionary;
+}
+
+COMPILE::JS
+{
+    import openfl.display.Stage3D;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DCompareMode;
+    import openfl.display3D.Context3DStencilAction;
+    import openfl.display3D.Context3DTriangleFace;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.utils.Dictionary;
+}
 
     import starling.core.starling_internal;
     import starling.display.BlendMode;

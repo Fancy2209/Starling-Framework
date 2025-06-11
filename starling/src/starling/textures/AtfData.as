@@ -10,11 +10,11 @@
 
 package starling.textures
 {
-    import flash.display3D.Context3DTextureFormat;
-    import flash.utils.ByteArray;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.utils.ByteArray;
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     /** A parser for the ATF data format. */
@@ -77,7 +77,7 @@ COMPILE::JS
             }
         }
 
-        /** The texture format. @see flash.display3D.textures.Context3DTextureFormat */
+        /** The texture format. @see openfl.display3D.textures.Context3DTextureFormat */
         public function get format():String { return _format; }
 
         /** The width of the texture in pixels. */

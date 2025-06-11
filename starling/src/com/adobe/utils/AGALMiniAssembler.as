@@ -34,14 +34,22 @@ package com.adobe.utils
 	// ===========================================================================
 	//	Imports
 	// ---------------------------------------------------------------------------
-	import flash.display3D.*;
-	import flash.utils.*;
-	
+COMPILE::SWF {
+	import openfl.display3D.*;
+	import openfl.utils.*;
+}
+
+COMPILE::JS {
+	import openfl.display3D.*;
+	import openfl.utils.*;
+	import org.apache.royale.utils.getTimer;
+}
 	// ===========================================================================
 	//	Class
 	// ---------------------------------------------------------------------------
 	public class AGALMiniAssembler
-	{		// ======================================================================
+	{	
+		// ======================================================================
 		//	Constants
 		// ----------------------------------------------------------------------				
 		protected static const REGEXP_OUTER_SPACES:RegExp		= /^\s+|\s+$/g;

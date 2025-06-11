@@ -16,7 +16,7 @@ package starling.animation
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     /** The Juggler takes objects that implement IAnimatable (like Tweens) and executes them.

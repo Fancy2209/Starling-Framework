@@ -10,11 +10,11 @@
 
 package starling.text
 {
-    import flash.text.TextFormat;
+    import openfl.text.TextFormat;
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.events.Event;
@@ -98,9 +98,9 @@ COMPILE::JS
         }
 
         /** Converts the Starling TextFormat instance to a Flash TextFormat. */
-        public function toNativeFormat(out:flash.text.TextFormat=null):flash.text.TextFormat
+        public function toNativeFormat(out:openfl.text.TextFormat=null):openfl.text.TextFormat
         {
-            if (out == null) out = new flash.text.TextFormat();
+            if (out == null) out = new openfl.text.TextFormat();
 
             out.font = _font;
             out.size = _size;

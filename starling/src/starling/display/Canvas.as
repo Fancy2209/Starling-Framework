@@ -10,13 +10,25 @@
 
 package starling.display
 {
-    
-    import flash.display.IGraphicsData;
-    import flash.display.GraphicsSolidFill;
-    import flash.display.GraphicsPath;
-    import flash.display.GraphicsPathCommand;
-    import flash.display.GraphicsEndFill;
-    import flash.geom.Point;
+COMPILE::SWF
+{   
+    import openfl.display.IGraphicsData;
+    import openfl.display.GraphicsSolidFill;
+    import openfl.display.GraphicsPath;
+    import openfl.display.GraphicsPathCommand;
+    import openfl.display.GraphicsEndFill;
+    import openfl.geom.Point;
+}
+
+COMPILE::JS
+{   
+    import openfl.display.IGraphicsData;
+    import openfl.display.GraphicsSolidFill;
+    import openfl.display.GraphicsPath;
+    import openfl.display.GraphicsPathCommand;
+    import openfl.display.GraphicsEndFill;
+    import openfl.geom.Point;
+}
 
     import starling.geom.Polygon;
     import starling.rendering.IndexData;
@@ -167,7 +179,7 @@ package starling.display
         
         /**  Submits a series of IGraphicsData instances for drawing. 
         *
-        * @param graphicsData      A Vector containing graphics objects, each of which much implement the flash.display.IGraphicsData interface.
+        * @param graphicsData      A Vector containing graphics objects, each of which much implement the openfl.display.IGraphicsData interface.
         */
         public function drawGraphicsData(graphicsData:Vector.<IGraphicsData>):void
         {
@@ -182,7 +194,7 @@ package starling.display
                 else if (graphicsProperties is GraphicsPath)
                 {
                     var i:int = 0;
-                    var data:Vector.<Number> = (graphicsProperties as GraphicsPath).data;
+                    var data:openfl.Vector = (graphicsProperties as GraphicsPath).data;
 
                     var commandLength:int = (graphicsProperties as GraphicsPath).commands.length;
                     for (var commandIndex:int = 0; commandIndex < commandLength; commandIndex++)

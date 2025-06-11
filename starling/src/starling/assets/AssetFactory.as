@@ -1,8 +1,18 @@
 package starling.assets
 {
-    import flash.system.Capabilities;
-    import flash.utils.ByteArray;
-    import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+    import openfl.system.Capabilities;
+    import openfl.utils.ByteArray;
+    import openfl.utils.getQualifiedClassName;
+}
+
+COMPILE::JS
+{
+    import openfl.system.Capabilities;
+    import openfl.utils.ByteArray;
+    import org.apache.royale.reflection.getQualifiedClassName;
+}
 
     import starling.errors.AbstractClassError;
 
@@ -26,7 +36,8 @@ package starling.assets
         public function AssetFactory()
         {
             if (Capabilities.isDebugger &&
-                getQualifiedClassName(this) == "starling.assets::AssetFactory")
+                (getQualifiedClassName(this) == "starling.assets::AssetFactory" ||
+                 getQualifiedClassName(this) == "starling.assets.AssetFactory"))
             {
                 throw new AbstractClassError();
             }

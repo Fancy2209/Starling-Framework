@@ -19,6 +19,7 @@
 			"${royalelib}/js/libs/LanguageJS.swc",
 			"${royalelib}/js/libs/CoreJS.swc",
 			"${royalelib}/js/libs/XMLJS.swc",
+			"${royalelib}/js/libs/ReflectionJS.swc",
 			"libs/openfl.swc"
 		],
 		"define": [
@@ -27,7 +28,8 @@
 		],
 		"include-sources": [
 			"src"
-		]
+		],
+		"js-vector-emulation-class": "openfl.Vector"
 	},
 	"additionalOptions": [
 		"-js-getter-prefix=get_",

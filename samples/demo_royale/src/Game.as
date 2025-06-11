@@ -1,8 +1,8 @@
 package 
 {
-    import flash.system.System;
-    import flash.ui.Keyboard;
-    import flash.utils.getDefinitionByName;
+    import openfl.system.System;
+    import openfl.ui.Keyboard;
+    import org.apache.royale.reflection.getDefinitionByName;
 
     import scenes.Scene;
 

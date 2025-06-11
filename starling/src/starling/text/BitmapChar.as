@@ -10,7 +10,16 @@
 
 package starling.text
 {
-    import flash.utils.Dictionary;
+
+COMPILE::SWF
+{
+    import openfl.utils.Dictionary;
+}
+
+COMPILE::JS
+{
+    import openfl.utils.Dictionary;
+}
 
     import starling.display.Image;
     import starling.textures.Texture;

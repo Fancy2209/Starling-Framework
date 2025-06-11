@@ -10,7 +10,15 @@
 
 package starling.events
 {
-    import flash.geom.Point;
+COMPILE::SWF
+{
+    import openfl.geom.Point;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Point;
+}
 
     import starling.display.DisplayObject;
     import starling.utils.Pool;

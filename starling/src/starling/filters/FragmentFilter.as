@@ -10,14 +10,21 @@
 
 package starling.filters
 {
-    import flash.display3D.Context3DTextureFormat;
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix3D;
-    import flash.geom.Rectangle;
+COMPILE::SWF 
+{
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Rectangle;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;
@@ -606,8 +613,17 @@ COMPILE::JS
     }
 }
 
-import flash.geom.Matrix;
-import flash.geom.Rectangle;
+COMPILE::SWF
+{
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
+}
+
+COMPILE::JS
+{
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
+}
 
 import starling.display.DisplayObject;
 import starling.display.Mesh;

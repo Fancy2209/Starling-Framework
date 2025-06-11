@@ -10,7 +10,15 @@
 
 package starling.rendering
 {
-    import flash.display3D.Context3D;
+COMPILE::SWF
+{
+    import openfl.display3D.Context3D;
+}
+
+COMPILE::JS
+{
+    import openfl.display3D.Context3D;
+}
 
     import starling.core.Starling;
     import starling.textures.Texture;

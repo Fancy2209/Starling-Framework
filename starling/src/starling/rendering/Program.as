@@ -10,13 +10,25 @@
 
 package starling.rendering
 {
+COMPILE::SWF
+{
     import com.adobe.utils.AGALMiniAssembler;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProgramType;
+    import openfl.display3D.Program3D;
+    import openfl.events.Event;
+    import openfl.utils.ByteArray;
+}
 
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DProgramType;
-    import flash.display3D.Program3D;
-    import flash.events.Event;
-    import flash.utils.ByteArray;
+COMPILE::JS
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProgramType;
+    import openfl.display3D.Program3D;
+    import openfl.events.Event;
+    import openfl.utils.ByteArray;
+    import openfl.utils.AGALMiniAssembler;
+}
 
     import starling.core.Starling;
     import starling.errors.MissingContextError;

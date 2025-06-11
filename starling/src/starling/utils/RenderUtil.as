@@ -10,6 +10,8 @@
 
 package starling.utils
 {
+COMPILE::SWF
+{ 
     import flash.display.Stage3D;
     import flash.display3D.Context3D;
     import flash.display3D.Context3DMipFilter;
@@ -20,11 +22,21 @@ package starling.utils
     import flash.events.ErrorEvent;
     import flash.events.Event;
     import flash.utils.setTimeout;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.Error;
-    import flash.errors.ArgumentError;
+    import openfl.display.Stage3D;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DMipFilter;
+    import openfl.display3D.Context3DRenderMode;
+    import openfl.display3D.Context3DTextureFilter;
+    import openfl.display3D.Context3DTextureFormat;
+    import openfl.display3D.Context3DWrapMode;
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.errors.Error;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;

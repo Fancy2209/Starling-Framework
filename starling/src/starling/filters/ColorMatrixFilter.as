@@ -194,12 +194,17 @@ package starling.filters
     }
 }
 
-import flash.display3D.Context3D;
-import flash.display3D.Context3DProgramType;
+COMPILE::JS 
+{
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+import openfl.errors.ArgumentError;
 }
 
 import starling.rendering.FilterEffect;

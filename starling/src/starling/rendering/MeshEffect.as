@@ -10,9 +10,20 @@
 
 package starling.rendering
 {
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DProgramType;
-    import flash.utils.getQualifiedClassName;
+
+COMPILE::SWF
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProgramType;
+    import openfl.utils.getQualifiedClassName;
+}
+
+COMPILE::JS
+{
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProgramType;
+    import org.apache.royale.reflection.getQualifiedClassName;
+}
 
     import starling.utils.RenderUtil;
 
@@ -51,7 +62,8 @@ package starling.rendering
             // this is actually the "MeshEffect" class.
 
             _alpha = 1.0;
-            _optimizeIfNotTinted = getQualifiedClassName(this) == "starling.rendering::MeshEffect";
+            _optimizeIfNotTinted = (getQualifiedClassName(this) == "starling.rendering::MeshEffect" ||
+                                    getQualifiedClassName(this) == "starling.rendering.MeshEffect");
         }
 
         /** @private */

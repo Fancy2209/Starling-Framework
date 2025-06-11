@@ -1,6 +1,6 @@
 package starling.utils
 {
-    import flash.utils.ByteArray;
+    import openfl.utils.ByteArray;
 
     import starling.errors.AbstractClassError;
 

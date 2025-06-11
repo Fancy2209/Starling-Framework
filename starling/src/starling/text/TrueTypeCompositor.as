@@ -10,9 +10,9 @@
 
 package starling.text
 {
-    import flash.geom.Matrix;
-    import flash.text.AntiAliasType;
-    import flash.text.TextField;
+    import openfl.geom.Matrix;
+    import openfl.text.AntiAliasType;
+    import openfl.text.TextField;
 
     import starling.display.MeshBatch;
     import starling.display.Quad;
@@ -33,8 +33,8 @@ package starling.text
         // helpers
         private static var sHelperMatrix:Matrix = new Matrix();
         private static var sHelperQuad:Quad = new Quad(100, 100);
-        private static var sNativeTextField:flash.text.TextField = new flash.text.TextField();
-        private static var sNativeFormat:flash.text.TextFormat = new flash.text.TextFormat();
+        private static var sNativeTextField:openfl.text.TextField = new openfl.text.TextField();
+        private static var sNativeFormat:openfl.text.TextFormat = new openfl.text.TextFormat();
 
         /** Creates a new TrueTypeCompositor instance. */
         public function TrueTypeCompositor()
@@ -115,15 +115,9 @@ package starling.text
 
             sNativeFormat.size = Number(sNativeFormat.size) * scale;
             sNativeTextField.embedFonts = SystemUtil.isEmbeddedFont(format.font, format.bold, format.italic);
-COMPILE::SWF 
-{ 
             sNativeTextField.styleSheet = null; // only to make sure 'defaultTextFormat' is assignable
-} 
             sNativeTextField.defaultTextFormat = sNativeFormat;
-COMPILE::SWF 
-{ 
             sNativeTextField.styleSheet = options.styleSheet;
-}
             sNativeTextField.width  = scaledWidth;
             sNativeTextField.height = scaledHeight;
             sNativeTextField.antiAliasType = AntiAliasType.ADVANCED;
@@ -190,10 +184,10 @@ COMPILE::SWF
             }
         }
 
-        private static function autoScaleNativeTextField(textField:flash.text.TextField,
+        private static function autoScaleNativeTextField(textField:openfl.text.TextField,
                                                          text:String, isHtmlText:Boolean):void
         {
-            var textFormat:flash.text.TextFormat = textField.defaultTextFormat;
+            var textFormat:openfl.text.TextFormat = textField.defaultTextFormat;
             var maxTextWidth:int  = textField.width  - 4;
             var maxTextHeight:int = textField.height - 4;
             var size:Number = Number(textFormat.size);
@@ -222,7 +216,7 @@ COMPILE::SWF
     }
 }
 
-import flash.display.BitmapData;
+import openfl.display.BitmapData;
 
 class BitmapDataEx extends BitmapData
 {

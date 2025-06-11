@@ -10,8 +10,15 @@
 
 package starling.filters
 {
-    import flash.geom.Rectangle;
+COMPILE::SWF
+{
+    import openfl.geom.Rectangle;
+}
 
+COMPILE::JS
+{
+    import openfl.geom.Rectangle;
+}
     import starling.display.DisplayObject;
     import starling.textures.Texture;
 

@@ -1,13 +1,13 @@
 package starling.utils
 {
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.ui.Mouse;
-    import flash.ui.MouseCursor;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.ui.Mouse;
+    import openfl.ui.MouseCursor;
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.display.ButtonState;

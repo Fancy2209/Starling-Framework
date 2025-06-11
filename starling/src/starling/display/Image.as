@@ -10,9 +10,17 @@
 
 package starling.display
 {
-    import flash.geom.Rectangle;
-    import flash.utils.Dictionary;
+COMPILE::SWF
+{
+    import openfl.geom.Rectangle;
+    import openfl.utils.Dictionary;
+}
 
+COMPILE::JS
+{
+    import openfl.geom.Rectangle;
+    import openfl.utils.Dictionary;
+}
     import starling.rendering.IndexData;
     import starling.rendering.VertexData;
     import starling.textures.Texture;

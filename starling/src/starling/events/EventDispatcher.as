@@ -10,7 +10,15 @@
 
 package starling.events
 {
-    import flash.utils.Dictionary;
+COMPILE::SWF
+{
+    import openfl.utils.Dictionary;
+}
+
+COMPILE::JS
+{
+    import openfl.utils.Dictionary;
+}
 
     import starling.core.starling_internal;
     import starling.display.DisplayObject;

@@ -1,8 +1,17 @@
 package starling.assets
 {
-    import flash.media.Sound;
-    import flash.media.Video;
-    import flash.utils.ByteArray;
+COMPILE::SWF
+{
+    import openfl.media.Sound;
+    import openfl.media.Video;
+    import openfl.utils.ByteArray;
+}
+
+COMPILE::JS
+{
+    import openfl.media.Sound;
+    import openfl.utils.ByteArray;
+}
 
     import starling.errors.AbstractClassError;
     import starling.text.BitmapFont;

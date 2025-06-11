@@ -10,21 +10,35 @@
 
 package starling.display
 {
-    import flash.display.BitmapData;
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix;
-    import flash.geom.Matrix3D;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.geom.Vector3D;
-    import flash.system.Capabilities;
-    import flash.ui.Mouse;
-    import flash.ui.MouseCursor;
-    import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+    import openfl.display.BitmapData;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.system.Capabilities;
+    import openfl.ui.Mouse;
+    import openfl.ui.MouseCursor;
+    import openfl.utils.getQualifiedClassName;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.display.BitmapData;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.system.Capabilities;
+    import openfl.ui.Mouse;
+    import openfl.ui.MouseCursor;
+    import org.apache.royale.reflection.getQualifiedClassName;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;
@@ -179,7 +193,8 @@ COMPILE::JS
         public function DisplayObject()
         {
             if (Capabilities.isDebugger &&
-                getQualifiedClassName(this) == "starling.display::DisplayObject")
+                (getQualifiedClassName(this) == "starling.display::DisplayObject" ||
+                 getQualifiedClassName(this) == "starling.display.DisplayObject"))
             {
                 throw new AbstractClassError();
             }

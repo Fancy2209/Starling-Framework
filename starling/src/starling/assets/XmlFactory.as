@@ -1,6 +1,14 @@
 package starling.assets
 {
-    import flash.utils.ByteArray;
+COMPILE::SWF
+{
+    import openfl.utils.ByteArray;
+}
+
+COMPILE::JS
+{
+    import openfl.utils.ByteArray;
+}
 
     import starling.text.BitmapFont;
     import starling.text.TextField;

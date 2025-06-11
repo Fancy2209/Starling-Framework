@@ -10,9 +10,19 @@
 
 package starling.events
 {
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.utils.getDefinitionByName;
+COMPILE::SWF
+{
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.utils.getDefinitionByName;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import org.apache.royale.reflection.getDefinitionByName;
+}
 
     import starling.core.Starling;
     import starling.display.DisplayObject;
@@ -587,7 +597,9 @@ package starling.events
             
             try
             {
-                var nativeAppClass:Object = getDefinitionByName("flash.desktop::NativeApplication");
+                var nativeAppClass:Object = getDefinitionByName("openfl.desktop::NativeApplication");
+                if(!nativeAppClass)
+                    nativeAppClass = getDefinitionByName("openfl.desktop.NativeApplication")
                 var nativeApp:Object = nativeAppClass["nativeApplication"];
                 
                 if (enable)

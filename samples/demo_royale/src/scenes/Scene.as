@@ -1,6 +1,6 @@
 package scenes
 {
-    import flash.geom.Rectangle;
+    import openfl.geom.Rectangle;
 
     import starling.display.Button;
     import starling.display.Sprite;

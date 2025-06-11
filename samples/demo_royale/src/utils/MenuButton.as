@@ -1,6 +1,6 @@
 package utils
 {
-    import flash.geom.Rectangle;
+    import openfl.geom.Rectangle;
 
     import starling.display.Button;
 

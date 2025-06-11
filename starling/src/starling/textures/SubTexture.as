@@ -10,10 +10,10 @@
 
 package starling.textures
 {
-    import flash.display3D.textures.TextureBase;
-    import flash.geom.Matrix;
-    import flash.geom.Rectangle;
-    import flash.system.Capabilities;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.geom.Matrix;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
 
     import starling.core.starling_internal;
 

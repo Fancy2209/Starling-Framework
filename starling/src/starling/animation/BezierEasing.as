@@ -4,7 +4,7 @@ package starling.animation
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     /** Provides Cubic Bezier Curve easing, which generalizes easing functions

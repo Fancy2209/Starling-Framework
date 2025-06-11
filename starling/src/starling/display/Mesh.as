@@ -10,12 +10,17 @@
 
 package starling.display
 {
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
+COMPILE::SWF
+{
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.starling_internal;

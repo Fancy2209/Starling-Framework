@@ -10,8 +10,15 @@
 
 package starling.display
 {
-    import flash.geom.Matrix;
+COMPILE::SWF
+{
+    import openfl.geom.Matrix;
+}
 
+COMPILE::JS
+{
+    import openfl.geom.Matrix;
+}
     import starling.rendering.IndexData;
     import starling.rendering.MeshEffect;
     import starling.rendering.Painter;

@@ -10,7 +10,15 @@
 
 package starling.filters
 {
-    import flash.geom.Point;
+COMPILE::SWF
+{
+    import openfl.geom.Point;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Point;
+}
 
     import starling.rendering.FilterEffect;
     import starling.rendering.Painter;
@@ -138,12 +146,17 @@ package starling.filters
     }
 }
 
-import flash.display3D.Context3D;
-import flash.display3D.Context3DProgramType;
+COMPILE::SWF 
+{
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+import openfl.errors.ArgumentError;
 }
 
 import starling.filters.CompositeMode;

@@ -10,8 +10,16 @@
 
 package starling.filters
 {
-    import flash.geom.Rectangle;
 
+COMPILE::SWF
+{
+    import openfl.geom.Rectangle;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Rectangle;
+}
     import starling.display.Stage;
     import starling.rendering.FilterEffect;
     import starling.rendering.Painter;
@@ -243,10 +251,21 @@ package starling.filters
     }
 }
 
-import flash.display.BitmapDataChannel;
-import flash.display3D.Context3D;
-import flash.display3D.Context3DProgramType;
-import flash.geom.Matrix3D;
+COMPILE::SWF
+{
+import openfl.display.BitmapDataChannel;
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+import openfl.geom.Matrix3D;
+}
+
+COMPILE::JS
+{
+import openfl.display.BitmapDataChannel;
+import openfl.display3D.Context3D;
+import openfl.display3D.Context3DProgramType;
+import openfl.geom.Matrix3D;
+}
 
 import starling.core.Starling;
 import starling.rendering.FilterEffect;

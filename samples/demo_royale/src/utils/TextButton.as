@@ -1,6 +1,6 @@
 package utils
 {
-    import flash.geom.Point;
+    import openfl.geom.Point;
 
     import starling.display.ButtonState;
     import starling.display.DisplayObject;

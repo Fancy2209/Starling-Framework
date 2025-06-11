@@ -10,13 +10,13 @@
 
 package starling.textures
 {
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.utils.Dictionary;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.utils.Dictionary;
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.display.Image;

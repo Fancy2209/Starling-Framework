@@ -12,7 +12,7 @@ package starling.filters
 {
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.events.Event;

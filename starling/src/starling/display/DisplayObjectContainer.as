@@ -10,15 +10,23 @@
 
 package starling.display
 {
-    import flash.geom.Matrix;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.system.Capabilities;
-    import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
+    import openfl.utils.getQualifiedClassName;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
+    import org.apache.royale.reflection.getQualifiedClassName;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.starling_internal;
@@ -90,7 +98,8 @@ COMPILE::JS
         public function DisplayObjectContainer()
         {
             if (Capabilities.isDebugger &&
-                getQualifiedClassName(this) == "starling.display::DisplayObjectContainer")
+                (getQualifiedClassName(this) == "starling.display::DisplayObjectContainer" ||
+                 getQualifiedClassName(this) == "starling.display.DisplayObjectContainer"))
             {
                 throw new AbstractClassError();
             }

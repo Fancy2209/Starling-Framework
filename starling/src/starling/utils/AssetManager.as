@@ -10,6 +10,8 @@
 
 package starling.utils
 {
+COMPILE::SWF
+{
     import flash.display.Bitmap;
     import flash.display.Loader;
     import flash.display.LoaderInfo;
@@ -30,17 +32,32 @@ package starling.utils
     import flash.utils.Dictionary;
     import flash.utils.getQualifiedClassName;
     import flash.utils.setTimeout;
-
-COMPILE::SWF 
-{
     import flash.system.ImageDecodingPolicy;
     import flash.utils.describeType;
 }
 
 COMPILE::JS 
 {
-    import flash.errors.Error;
-    import flash.errors.ArgumentError;
+    import openfl.display.Bitmap;
+    import openfl.display.Loader;
+    import openfl.display.LoaderInfo;
+    import openfl.events.HTTPStatusEvent;
+    import openfl.events.IOErrorEvent;
+    import openfl.events.ProgressEvent;
+    import openfl.events.SecurityErrorEvent;
+    import openfl.media.Sound;
+    import openfl.media.SoundChannel;
+    import openfl.media.SoundTransform;
+    import openfl.net.FileReference;
+    import openfl.net.URLLoader;
+    import openfl.net.URLLoaderDataFormat;
+    import openfl.net.URLRequest;
+    import openfl.system.LoaderContext;
+    import openfl.utils.ByteArray;
+    import openfl.utils.Dictionary;
+    import org.apache.royale.reflection.getQualifiedClassName;
+    import openfl.errors.Error;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.core.Starling;
@@ -598,7 +615,7 @@ COMPILE::SWF
                 }
 }
                 }
-                else if (getQualifiedClassName(rawAsset) == "flash.filesystem::File")
+                else if (getQualifiedClassName(rawAsset) == "openfl.filesystem::File")
                 {
                     if (!rawAsset["exists"])
                     {
@@ -642,7 +659,7 @@ COMPILE::SWF
 
             log("Enqueuing '" + name + "'");
 
-            if (getQualifiedClassName(asset) == "flash.filesystem::File")
+            if (getQualifiedClassName(asset) == "openfl.filesystem::File")
                 asset = decodeURI(asset["url"]);
 
             _queue.push({
@@ -1345,7 +1362,7 @@ COMPILE::SWF
         
         /** Specifies whether a check should be made for the existence of a URL policy file before
          *  loading an object from a remote server. More information about this topic can be found 
-         *  in the 'flash.system.LoaderContext' documentation. @default false */
+         *  in the 'openfl.system.LoaderContext' documentation. @default false */
         public function get checkPolicyFile():Boolean { return _checkPolicyFile; }
         public function set checkPolicyFile(value:Boolean):void { _checkPolicyFile = value; }
 

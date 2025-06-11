@@ -10,11 +10,24 @@
 
 package starling.utils
 {
+
+COMPILE::SWF
+{
     import flash.geom.Matrix;
     import flash.geom.Matrix3D;
     import flash.geom.Point;
     import flash.geom.Rectangle;
     import flash.geom.Vector3D;
+}
+
+COMPILE::JS
+{
+    import openfl.geom.Matrix;
+    import openfl.geom.Matrix3D;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+}
 
     import starling.errors.AbstractClassError;
 

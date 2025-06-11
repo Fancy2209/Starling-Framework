@@ -10,12 +10,17 @@
 
 package starling.geom
 {
-    import flash.geom.Point;
-    import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+    import openfl.geom.Point;
+    import openfl.utils.getQualifiedClassName;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.ArgumentError;
+    import openfl.geom.Point;
+    import org.apache.royale.reflection.getQualifiedClassName;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.rendering.IndexData;
@@ -474,12 +479,17 @@ COMPILE::JS
     }
 }
 
-import flash.errors.IllegalOperationError;
-import flash.utils.getQualifiedClassName;
+COMPILE::SWF
+{
+import openfl.errors.IllegalOperationError;
+import openfl.utils.getQualifiedClassName;
+}
 
 COMPILE::JS 
 {
-    import flash.errors.Error;
+import openfl.errors.IllegalOperationError;
+import org.apache.royale.reflection.getQualifiedClassName;
+import openfl.errors.Error;
 }
 
 import starling.geom.Polygon;
@@ -521,7 +531,12 @@ class ImmutablePolygon extends Polygon
 
     private function getImmutableError():Error
     {
+        COMPILE::SWF {
         var className:String = getQualifiedClassName(this).split("::").pop();
+        }
+        COMPILE::JS {
+        var className:String = getQualifiedClassName(this).split(".").pop();
+        }
         var msg:String = className + " cannot be modified. Call 'clone' to create a mutable copy.";
         return new IllegalOperationError(msg);
     }

@@ -10,40 +10,68 @@
 
 package starling.core
 {
-    import flash.display.Shape;
-    import flash.display.Sprite;
-    import flash.display.Stage3D;
-    import flash.display.StageAlign;
-    import flash.display.StageScaleMode;
-    import flash.display3D.Context3D;
-    import flash.display3D.Context3DProfile;
-    import flash.events.ErrorEvent;
-    import flash.events.Event;
-    import flash.events.KeyboardEvent;
-    import flash.events.MouseEvent;
-    import flash.events.TouchEvent;
-    import flash.geom.Matrix;
-    import flash.geom.Point;
-    import flash.geom.Rectangle;
-    import flash.system.Capabilities;
-    import flash.text.TextField;
-    import flash.text.TextFieldAutoSize;
-    import flash.text.TextFormat;
-    import flash.text.TextFormatAlign;
-    import flash.ui.Mouse;
-    import flash.ui.Multitouch;
-    import flash.ui.MultitouchInputMode;
-    import flash.utils.getTimer;
-    import flash.utils.setTimeout;
+COMPILE::SWF 
+{
+    import openfl.display.Shape;
+    import openfl.display.Sprite;
+    import openfl.display.Stage;
+    import openfl.display.Stage3D;
+    import openfl.display.StageAlign;
+    import openfl.display.StageScaleMode;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProfile;
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.events.KeyboardEvent;
+    import openfl.events.MouseEvent;
+    import openfl.events.TouchEvent;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
+    import openfl.text.TextField;
+    import openfl.text.TextFieldAutoSize;
+    import openfl.text.TextFormat;
+    import openfl.text.TextFormatAlign;
+    import openfl.ui.Mouse;
+    import openfl.ui.Multitouch;
+    import openfl.ui.MultitouchInputMode;
+    import openfl.utils.getTimer;
+    import openfl.utils.setTimeout;
+}
 
 COMPILE::JS
 {
-    import flash.errors.ArgumentError;
+    import openfl.display.Shape;
+    import openfl.display.Sprite;
+    import openfl.display.Stage;
+    import openfl.display.Stage3D;
+    import openfl.display.StageAlign;
+    import openfl.display.StageScaleMode;
+    import openfl.display3D.Context3D;
+    import openfl.display3D.Context3DProfile;
+    import openfl.events.ErrorEvent;
+    import openfl.events.Event;
+    import openfl.events.KeyboardEvent;
+    import openfl.events.MouseEvent;
+    import openfl.events.TouchEvent;
+    import openfl.geom.Matrix;
+    import openfl.geom.Point;
+    import openfl.geom.Rectangle;
+    import openfl.system.Capabilities;
+    import openfl.text.TextField;
+    import openfl.text.TextFieldAutoSize;
+    import openfl.text.TextFormat;
+    import openfl.text.TextFormatAlign;
+    import openfl.ui.Mouse;
+    import openfl.ui.Multitouch;
+    import openfl.ui.MultitouchInputMode;
+    import org.apache.royale.utils.getTimer;
+    import openfl.errors.ArgumentError;
 }
 
     import starling.animation.Juggler;
     import starling.display.DisplayObject;
-    import starling.display.Stage;
     import starling.events.EventDispatcher;
     import starling.events.ResizeEvent;
     import starling.events.TouchPhase;
@@ -209,7 +237,7 @@ COMPILE::JS
 
         // members
 
-        private var _stage:Stage; // starling.display.stage!
+        private var _stage:starling.display.Stage; // starling.display.stage!
         private var _rootClass:Class;
         private var _root:DisplayObject;
         private var _juggler:Juggler;
@@ -235,7 +263,7 @@ COMPILE::JS
         private var _previousViewPort:Rectangle;
         private var _clippedViewPort:Rectangle;
 
-        private var _nativeStage:flash.display.Stage;
+        private var _nativeStage:Stage;
         private var _nativeStageEmpty:Boolean;
         private var _nativeOverlay:Sprite;
 
@@ -268,7 +296,7 @@ COMPILE::JS
          *                        profile automatically.</li>
          *                    </ul>
          */
-        public function Starling(rootClass:Class, stage:flash.display.Stage,
+        public function Starling(rootClass:Class, stage:Stage,
                                  viewPort:Rectangle=null, stage3D:Stage3D=null,
                                  renderMode:String="auto", profile:Object="auto")
         {
@@ -285,7 +313,7 @@ COMPILE::JS
             _rootClass = rootClass;
             _viewPort = viewPort;
             _previousViewPort = new Rectangle();
-            _stage = new Stage(viewPort.width, viewPort.height, stage.color);
+            _stage = new starling.display.Stage(viewPort.width, viewPort.height, stage.color as int);
             _nativeOverlay = new Sprite();
             _nativeStage = stage;
             _nativeStage.addChild(_nativeOverlay);
@@ -323,7 +351,7 @@ COMPILE::JS
             stage3D.addEventListener(ErrorEvent.ERROR, onStage3DError, false, 10, true);
 
             var runtimeVersion:int = parseInt(SystemUtil.version.split(",").shift());
-            if (runtimeVersion < 19)
+            if (runtimeVersion < 19 && COMPILE::SWF)
             {
                 var runtime:String = SystemUtil.isAIR ? "Adobe AIR" : "Flash Player";
                 stopWithFatalError(
@@ -1038,13 +1066,13 @@ COMPILE::JS
         }
 
         /** The Starling stage object, which is the root of the display tree that is rendered. */
-        public function get stage():Stage { return _stage; }
+        public function get stage():starling.display.Stage { return _stage; }
 
         /** The Flash Stage3D object Starling renders into. */
         public function get stage3D():Stage3D { return _painter.stage3D; }
 
         /** The Flash (2D) stage object Starling renders beneath. */
-        public function get nativeStage():flash.display.Stage { return _nativeStage; }
+        public function get nativeStage():Stage { return _nativeStage; }
 
         /** The instance of the root class provided in the constructor. Available as soon as
          *  the event 'ROOT_CREATED' has been dispatched. */
@@ -1250,8 +1278,17 @@ COMPILE::JS
     }
 }
 
-import flash.display.DisplayObject;
-import flash.display.DisplayObjectContainer;
+COMPILE::SWF
+{
+import openfl.display.DisplayObject;
+import openfl.display.DisplayObjectContainer;
+}
+
+COMPILE::JS
+{
+import openfl.display.DisplayObject;
+import openfl.display.DisplayObjectContainer;
+}
 
 // put here to avoid naming conflicts
 function isNativeDisplayObjectEmpty(object:DisplayObject):Boolean

@@ -1,7 +1,7 @@
 package scenes
 {
-    import flash.display.BitmapData;
-    import flash.display.BitmapDataChannel;
+    import openfl.display.BitmapData;
+    import openfl.display.BitmapDataChannel;
 
     import starling.core.Starling;
     import starling.display.Button;

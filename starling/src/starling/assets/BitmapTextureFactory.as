@@ -1,17 +1,30 @@
 package starling.assets
 {
-    import flash.display.Bitmap;
-    import flash.display.BitmapData;
-    import flash.display.Loader;
-    import flash.display.LoaderInfo;
-    import flash.events.Event;
-    import flash.events.IOErrorEvent;
 COMPILE::SWF 
 {
-    import flash.system.ImageDecodingPolicy;
+    import openfl.display.Bitmap;
+    import openfl.display.BitmapData;
+    import openfl.display.Loader;
+    import openfl.display.LoaderInfo;
+    import openfl.events.Event;
+    import openfl.events.IOErrorEvent;
+    import openfl.system.ImageDecodingPolicy;
+    import openfl.system.LoaderContext;
+    import openfl.utils.ByteArray;
 }
-    import flash.system.LoaderContext;
-    import flash.utils.ByteArray;
+
+COMPILE::JS 
+{
+    import openfl.display.Bitmap;
+    import openfl.display.BitmapData;
+    import openfl.display.Loader;
+    import openfl.display.LoaderInfo;
+    import openfl.events.Event;
+    import openfl.events.IOErrorEvent;
+    import openfl.system.LoaderContext;
+    import openfl.utils.ByteArray;
+}
+
 
     import starling.textures.Texture;
     import starling.textures.TextureOptions;

@@ -1,19 +1,17 @@
 {
-	"config": "royale",
+	"config": "js",
 	"compilerOptions": {
 		"targets": [
 			"JS"
 		],
-		"js-external-library-path": [
-			"../../starling/libs/openfl.swc"
-		],
 		"html-template": "index.template.html",
-		"swf-external-library-path": [
+		"external-library-path": [
 			"${royalelib}/../js/libs/js.swc",
 			"${royalelib}/../js/libs/GCL.swc",
 			"${royalelib}/js/libs/LanguageJS.swc",
 			"${royalelib}/js/libs/CoreJS.swc",
 			"${royalelib}/js/libs/XMLJS.swc",
+			"${royalelib}/js/libs/ReflectionJS.swc",
 			"../../starling/libs/openfl.swc"
 		],
 		"define": [
@@ -23,7 +21,8 @@
 		"source-path": [
 			"src",
 			"../../starling/src"
-		]
+		],
+		"js-vector-emulation-class": "openfl.Vector"
 	},
 	"copySourcePathAssets": true,
 	"mainClass": "Main"

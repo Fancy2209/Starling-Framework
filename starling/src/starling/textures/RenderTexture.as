@@ -10,14 +10,14 @@
 
 package starling.textures
 {
-    import flash.display3D.Context3DCompareMode;
-    import flash.display3D.Context3DTriangleFace;
-    import flash.display3D.textures.TextureBase;
-    import flash.errors.IllegalOperationError;
-    import flash.geom.Matrix;
-    import flash.geom.Rectangle;
-    import flash.geom.Vector3D;
-    import flash.utils.Dictionary;
+    import openfl.display3D.Context3DCompareMode;
+    import openfl.display3D.Context3DTriangleFace;
+    import openfl.display3D.textures.TextureBase;
+    import openfl.errors.IllegalOperationError;
+    import openfl.geom.Matrix;
+    import openfl.geom.Rectangle;
+    import openfl.geom.Vector3D;
+    import openfl.utils.Dictionary;
 
     import starling.core.Starling;
     import starling.display.BlendMode;

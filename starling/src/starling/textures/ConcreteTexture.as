@@ -10,21 +10,21 @@
 
 package starling.textures
 {
-    import flash.display.Bitmap;
-    import flash.display.BitmapData;
-    import flash.display3D.textures.TextureBase;
+    import openfl.display.Bitmap;
+    import openfl.display.BitmapData;
+    import openfl.display3D.textures.TextureBase;
 COMPILE::SWF
 {
-    import flash.media.Camera;
+    import openfl.media.Camera;
 }
-    import flash.net.NetStream;
-    import flash.system.Capabilities;
-    import flash.utils.ByteArray;
-    import flash.utils.getQualifiedClassName;
+    import openfl.net.NetStream;
+    import openfl.system.Capabilities;
+    import openfl.utils.ByteArray;
+    import org.apache.royale.reflection.getQualifiedClassName;
 
 COMPILE::JS 
 {
-    import flash.errors.Error;
+    import openfl.errors.Error;
 }
 
     import starling.core.Starling;
@@ -75,7 +75,7 @@ COMPILE::JS
                                         optimizedForRenderTexture:Boolean=false, scale:Number=1)
         {
             if (Capabilities.isDebugger &&
-                getQualifiedClassName(this) == "starling.textures::ConcreteTexture")
+                getQualifiedClassName(this) == "starling.textures.ConcreteTexture")
             {
                 throw new AbstractClassError();
             }
@@ -237,7 +237,7 @@ COMPILE::SWF
         public function get optimizedForRenderTexture():Boolean { return _optimizedForRenderTexture; }
 
         /** Indicates if the base texture is a standard power-of-two dimensioned texture of type
-         *  <code>flash.display3D.textures.Texture</code>. */
+         *  <code>openfl.display3D.textures.Texture</code>. */
         public function get isPotTexture():Boolean { return false; }
         
         /** The function that you provide here will be called after a context loss.
