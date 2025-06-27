@@ -58,5 +58,5 @@ starling/build/apm/*.airpackage
 samples/scaffold_mobile/lib/
 
 # Royale
-index.html
-*.js
+js-release/
+js-debug/

@@ -194,7 +194,7 @@ COMPILE::JS
                 else if (graphicsProperties is GraphicsPath)
                 {
                     var i:int = 0;
-                    var data:openfl.Vector = (graphicsProperties as GraphicsPath).data;
+                    var data:Vector.<Number> = (graphicsProperties as GraphicsPath).data;
 
                     var commandLength:int = (graphicsProperties as GraphicsPath).commands.length;
                     for (var commandIndex:int = 0; commandIndex < commandLength; commandIndex++)
