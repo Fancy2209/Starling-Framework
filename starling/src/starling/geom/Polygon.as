@@ -192,7 +192,7 @@ COMPILE::JS
 
                 var triangleCount:int = indexes.length/3;
                 for (var triIndex:int = 0; triIndex < triangleCount; triIndex++)
-                    indexData.addTriangle(indexes[triIndex*3], indexes[triIndex*3+1], indexes[triIndex*3+2]);
+                    indexData.addTriangle(indexes[triIndex*3]+offset, indexes[triIndex*3+1]+offset, indexes[triIndex*3+2]+offset);
                 return indexData;
             }
 
