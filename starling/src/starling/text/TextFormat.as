@@ -15,6 +15,7 @@ package starling.text
     import starling.events.Event;
     import starling.events.EventDispatcher;
     import starling.utils.Align;
+    import flash.errors.ArgumentError;
 
     /** Dispatched when any property of the instance changes. */
     [Event(name="change", type="starling.events.Event")]

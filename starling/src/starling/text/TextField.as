@@ -28,6 +28,7 @@ package starling.text
     import starling.styles.MeshStyle;
     import starling.utils.RectangleUtil;
     import starling.utils.SystemUtil;
+    import flash.errors.ArgumentError;
 
     /** A TextField displays text, using either standard true type fonts, custom bitmap fonts,
      *  or a custom text representation.

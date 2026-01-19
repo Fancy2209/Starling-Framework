@@ -1,0 +1,28 @@
+{
+	"config": "royale",
+	"compilerOptions": {
+		"targets": ["JS"],
+		"output": "bin/Demo_Royale.swf",
+		"source-path": [
+			"src",
+			"../demo_mobile/src",
+			"../demo_mobile/assets",
+			"../demo_mobile/system",
+			"../../starling/src"
+		],
+		"js-library-path": ["libs/XMLJS.swc"],
+		"js-external-library-path": ["node_modules/openfl/dist/openfl.swc"],
+		"html-template": "index.template.html"
+	},
+	"mainClass": "Main",
+	"copySourcePathAssets": true,
+	"additionalOptions": [
+		"-js-getter-prefix=get_",
+        "-js-setter-prefix=set_",
+		"-js-vector-emulation-class=flash.Vector",
+		"-js-vector-emulation-element-types=false",
+		"-js-vector-emulation-literal-function=flash.Vector.ofArray",
+		"-js-vector-index-checks=false"//,
+		//"-locale en_US "
+	]
+}

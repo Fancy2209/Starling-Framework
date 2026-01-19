@@ -16,6 +16,9 @@ package starling.textures
     import flash.events.ErrorEvent;
     import flash.events.Event;
     import flash.utils.setTimeout;
+COMPILE::JS {
+    import flash.errors.Error;
+}
 
     import starling.core.Starling;
     import starling.utils.execute;
@@ -82,6 +85,7 @@ package starling.textures
         {
             if (sAsyncUploadEnabled)
             {
+COMPILE::SWF {
                 try { base["uploadFromBitmapDataAsync"](source); }
                 catch (error:Error)
                 {
@@ -90,6 +94,17 @@ package starling.textures
                     else
                         throw error;
                 }
+}
+COMPILE::JS {
+                try { base["uploadFromBitmapDataAsync"](source); }
+                catch (error:flash.errors.Error)
+                {
+                    if (error.errorID == 3708 || error.errorID == 1069)
+                        sAsyncUploadEnabled = false; // feature or method not available
+                    else
+                        throw error;
+                }
+}
             }
 
             if (!sAsyncUploadEnabled)

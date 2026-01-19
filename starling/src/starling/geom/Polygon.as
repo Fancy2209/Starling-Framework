@@ -18,6 +18,11 @@ package starling.geom
     import starling.utils.MathUtil;
     import starling.utils.Pool;
     import starling.utils.Earcut;
+COMPILE::JS
+{
+    import flash.errors.Error;
+        import flash.errors.ArgumentError;
+}
 
     /** A polygon describes a closed two-dimensional shape bounded by a number of straight
      *  line segments.
@@ -517,7 +522,7 @@ class ImmutablePolygon extends Polygon
         else super.reverse();
     }
 
-    private function getImmutableError():Error
+    private function getImmutableError():flash.errors.Error
     {
         var className:String = getQualifiedClassName(this).split("::").pop();
         var msg:String = className + " cannot be modified. Call 'clone' to create a mutable copy.";

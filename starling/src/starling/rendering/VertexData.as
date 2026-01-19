@@ -27,6 +27,7 @@ package starling.rendering
     import starling.utils.MathUtil;
     import starling.utils.MatrixUtil;
     import starling.utils.StringUtil;
+    import flash.errors.ArgumentError;
 
     /** The VertexData class manages a raw list of vertex information, allowing direct upload
      *  to Stage3D vertex buffers. <em>You only have to work with this class if you're writing

@@ -30,6 +30,7 @@ package starling.filters
     import starling.utils.Padding;
     import starling.utils.Pool;
     import starling.utils.RectangleUtil;
+    import flash.errors.ArgumentError;
 
     /** Dispatched when the settings change in a way that requires a redraw. */
     [Event(name="change", type="starling.events.Event")]

@@ -55,3 +55,7 @@ starling/build/apm/*.airpackage
 
 # ANE dir
 samples/scaffold_mobile/lib/
+
+node_modules/
+js-debug/
+js-release/

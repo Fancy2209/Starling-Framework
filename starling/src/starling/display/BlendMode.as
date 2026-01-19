@@ -13,6 +13,7 @@ package starling.display
     import flash.display3D.Context3DBlendFactor;
 
     import starling.core.Starling;
+    import flash.errors.ArgumentError;
 
     /** A class that provides constant values for visual blend mode effects.
      *   

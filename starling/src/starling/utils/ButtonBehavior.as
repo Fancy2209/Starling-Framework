@@ -11,6 +11,7 @@ package starling.utils
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
+    import flash.errors.ArgumentError;
 
     /** A utility class that can help with creating button-like display objects.
      *

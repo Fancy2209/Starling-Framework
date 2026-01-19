@@ -23,6 +23,11 @@ package starling.textures
     import starling.core.Starling;
     import starling.utils.MathUtil;
     import starling.utils.execute;
+COMPILE::JS
+{
+    import flash.errors.ArgumentError;
+    import flash.errors.Error;
+}
 
     /** @private
      *
@@ -156,13 +161,26 @@ package starling.textures
         {
             if (sAsyncUploadEnabled)
             {
-                try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
-                catch (error:Error)
+                COMPILE::SWF {
+                    try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
+                    catch (error:Error)
+                    {
+                        if (error.errorID == 3708 || error.errorID == 1069)
+                            sAsyncUploadEnabled = false;
+                        else
+                            throw error;
+                    }
+                }
+                COMPILE::JS 
                 {
-                    if (error.errorID == 3708 || error.errorID == 1069)
-                        sAsyncUploadEnabled = false;
-                    else
-                        throw error;
+                    try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
+                    catch (error:flash.errors.Error)
+                    {
+                        if (error.errorID == 3708 || error.errorID == 1069)
+                            sAsyncUploadEnabled = false;
+                        else
+                            throw error;
+                    }
                 }
             }
 

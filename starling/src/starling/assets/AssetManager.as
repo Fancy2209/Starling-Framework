@@ -1001,7 +1001,19 @@ package starling.assets
          */
         protected function matchRegEx(url:String):Array
         {
-            return NAME_REGEX.exec(decodeURIComponent(url));
+            var result:* = NAME_REGEX.exec(decodeURIComponent(url));
+            if(result is Array)
+                return result;
+
+            // RegExpResult from Apache Royale
+            else {
+                var arr:Array = [];
+                for(var i:int = 0; i < result.length; i++)
+                {
+                    arr.push[result[i]];
+                }
+                return arr;
+            }            
         }
 
         /** Disposes the given asset. ByteArrays are cleared, XMLs are disposed using
@@ -1010,7 +1022,7 @@ package starling.assets
         protected function disposeAsset(asset:Object):void
         {
             if (asset is ByteArray) (asset as ByteArray).clear();
-            if (asset is XML) System.disposeXML(asset as XML);
+            COMPILE::SWF{if (asset is XML) System.disposeXML(asset as XML);}
             if ("dispose" in asset) asset["dispose"]();
         }
 
@@ -1085,6 +1097,7 @@ package starling.assets
 }
 
 import starling.assets.AssetManager;
+    import flash.errors.ArgumentError;
 
 class AssetPostProcessor
 {

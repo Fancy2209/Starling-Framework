@@ -51,6 +51,7 @@ package starling.core
     import starling.utils.Pool;
     import starling.utils.RectangleUtil;
     import starling.utils.SystemUtil;
+    import flash.errors.ArgumentError;
 
     /** Dispatched when a new render context is created. The 'data' property references the context. */
     [Event(name="context3DCreate", type="starling.events.Event")]
@@ -280,7 +281,7 @@ package starling.core
             _rootClass = rootClass;
             _viewPort = viewPort;
             _previousViewPort = new Rectangle();
-            _stage = new Stage(viewPort.width, viewPort.height, stage.color);
+            _stage = new Stage(viewPort.width, viewPort.height, stage.color as uint);
             _nativeOverlay = new Sprite();
             _nativeStage = stage;
             _nativeStage.addChild(_nativeOverlay);
@@ -318,7 +319,7 @@ package starling.core
             stage3D.addEventListener(ErrorEvent.ERROR, onStage3DError, false, 10, true);
 
             var runtimeVersion:int = parseInt(SystemUtil.version.split(",").shift());
-            if (runtimeVersion < 19)
+            if (runtimeVersion < 19 && SystemUtil.platform != "WEB")
             {
                 var runtime:String = SystemUtil.isAIR ? "Adobe AIR" : "Flash Player";
                 stopWithFatalError(
@@ -347,7 +348,7 @@ package starling.core
             _nativeStage.removeEventListener(KeyboardEvent.KEY_UP, onKey, false);
             _nativeStage.removeEventListener(Event.RESIZE, onResize, false);
             _nativeStage.removeEventListener(Event.MOUSE_LEAVE, onMouseLeave, false);
-            _nativeStage.removeEventListener(Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
+            //_nativeStage.removeEventListener(Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
             _nativeStage.removeChild(_nativeOverlay);
 
             stage3D.removeEventListener(Event.CONTEXT3D_CREATE, onContextCreated, false);
@@ -499,7 +500,9 @@ package starling.core
                 var contentScaleFactor:Number =
                         _supportHighResolutions ? _nativeStage.contentsScaleFactor : 1.0;
 
+COMPILE::SWF {
                 if (_supportBrowserZoom) contentScaleFactor *= _nativeStage.browserZoomFactor;
+}
 
                 _painter.configureBackBuffer(_clippedViewPort, contentScaleFactor,
                     _antiAliasing, true, _supportBrowserZoom);
@@ -692,7 +695,8 @@ package starling.core
                 _stage.dispatchEvent(new ResizeEvent(Event.RESIZE, stageWidth, stageHeight));
             }
         }
-
+        
+        COMPILE::SWF
         private function onBrowserZoomChange(event:Event):void
         {
             _painter.refreshBackBufferSize(
@@ -1099,11 +1103,12 @@ package starling.core
             {
                 _supportBrowserZoom = value;
                 if (contextValid) updateViewPort(true);
-
+            COMPILE::SWF {
                 if (value) _nativeStage.addEventListener(
                     Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false, 0, true);
                 else _nativeStage.removeEventListener(
                     Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
+            }
             }
         }
 

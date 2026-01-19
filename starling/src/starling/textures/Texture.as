@@ -20,7 +20,9 @@ package starling.textures
     import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
+COMPILE::SWF {
     import flash.media.Camera;
+}
     import flash.net.NetStream;
     import flash.system.Capabilities;
     import flash.utils.ByteArray;
@@ -35,6 +37,7 @@ package starling.textures
     import starling.utils.MatrixUtil;
     import starling.utils.SystemUtil;
     import starling.utils.execute;
+    import flash.errors.ArgumentError;
 
     /** <p>A texture stores the information that represents an image. It cannot be added to the
      *  display list directly; instead it has to be mapped onto a display object. In Starling,
@@ -445,6 +448,7 @@ package starling.textures
          *  @param onComplete will be executed when the texture is ready. May contain a parameter
          *                 of type 'Texture'.
          */
+        COMPILE::SWF 
         public static function fromCamera(camera:Camera, scale:Number=1,
                                           onComplete:Function=null):Texture
         {

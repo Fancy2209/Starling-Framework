@@ -13,7 +13,9 @@ package starling.textures
     import flash.display.Bitmap;
     import flash.display.BitmapData;
     import flash.display3D.textures.TextureBase;
+COMPILE::SWF{
     import flash.media.Camera;
+}
     import flash.net.NetStream;
     import flash.system.Capabilities;
     import flash.utils.ByteArray;
@@ -151,6 +153,7 @@ package starling.textures
         }
 
         /** Specifies a video stream from a camera to be rendered within the texture. */
+        COMPILE::SWF
         public function attachCamera(camera:Camera, onComplete:Function=null):void
         {
             attachVideo("Camera", camera, onComplete);

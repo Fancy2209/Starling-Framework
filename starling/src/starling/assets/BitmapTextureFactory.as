@@ -6,7 +6,9 @@ package starling.assets
     import flash.display.LoaderInfo;
     import flash.events.Event;
     import flash.events.IOErrorEvent;
+COMPILE::SWF {
     import flash.system.ImageDecodingPolicy;
+}
     import flash.system.LoaderContext;
     import flash.utils.ByteArray;
 
@@ -137,7 +139,9 @@ package starling.assets
             loaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onIoError);
             loaderInfo.addEventListener(Event.COMPLETE, onLoaderComplete);
             var loaderContext:LoaderContext = new LoaderContext();
+COMPILE::SWF {
             loaderContext.imageDecodingPolicy = ImageDecodingPolicy.ON_LOAD;
+}
             loader.loadBytes(data, loaderContext);
 
             function onIoError(event:IOErrorEvent):void

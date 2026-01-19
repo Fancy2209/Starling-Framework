@@ -1,0 +1,19 @@
+{
+  "name": "org.gamua.starling.demo",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "asconfigc": "^1.8.1",
+    "cpx": "^1.5.0",
+    "http-server": "^14.1.1",
+    "openfl": "^9.5.0"
+  },
+  "scripts": {
+    "build": "npm run build:prod",
+    "build:dev": "cpx node_modules/openfl/dist/openfl.min.js bin/js-debug && asconfigc --debug=true",
+    "build:prod": "cpx node_modules/openfl/dist/openfl.min.js bin/js-release && asconfigc --debug=false",
+    "start": "npm run start:dev",
+    "start:dev": "npm run build:dev && http-server bin/js-debug",
+    "start:prod": "npm run build:prod && http-server bin/js-release"
+  }
+}

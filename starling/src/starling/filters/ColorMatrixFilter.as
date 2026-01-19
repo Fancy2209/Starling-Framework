@@ -199,6 +199,7 @@ import flash.display3D.Context3DProgramType;
 
 import starling.rendering.FilterEffect;
 import starling.rendering.Program;
+    import flash.errors.ArgumentError;
 
 class ColorMatrixEffect extends FilterEffect
 {

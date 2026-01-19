@@ -13,6 +13,7 @@ package starling.animation
     import starling.core.starling_internal;
     import starling.events.Event;
     import starling.events.EventDispatcher;
+    import flash.errors.ArgumentError;
 
     /** The Juggler takes objects that implement IAnimatable (like Tweens) and executes them.
      *
