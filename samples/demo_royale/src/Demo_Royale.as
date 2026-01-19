@@ -47,9 +47,11 @@ package
             Starling.multitouchEnabled = true; // for Multitouch Scene
 
             _starling = new Starling(Game, stage);
-            _starling.simulateMultitouch = true;
-            _starling.skipUnchangedFrames = true;
-            _starling.supportBrowserZoom = true;
+            _starling.stage.stageWidth = Constants.GameWidth;
+            _starling.stage.stageHeight = Constants.GameHeight;
+            //_starling.simulateMultitouch = true;
+            //_starling.skipUnchangedFrames = true;
+            //_starling.supportBrowserZoom = true;
             _starling.supportHighResolutions = true;
             _starling.enableErrorChecking = Capabilities.isDebugger;
             _starling.addEventListener(Event.ROOT_CREATED, function():void
@@ -75,9 +77,8 @@ package
                 new URLRequest("assets/textures/1x/background.jpg"),
                 new URLRequest("assets/textures/1x/compressed_texture.atf"),
                 new URLRequest("assets/fonts/1x/desyrel.fnt"),
-                new URLRequest("/assets/fonts/1x/desyrel.png"),
-                new URLRequest("assets/audio/wing_flap.mp3")
-            ]);
+                new URLRequest("assets/fonts/1x/desyrel.png"),
+                new URLRequest("assets/audio/wing_flap.mp3")]);
 
             // Now, while the AssetManager now contains pointers to all the assets, it actually
             // has not loaded them yet. This happens in the "loadQueue" method; and since this

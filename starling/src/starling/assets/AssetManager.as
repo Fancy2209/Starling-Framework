@@ -424,7 +424,7 @@ package starling.assets
             var self:AssetManager = this;
             var canceled:Boolean = false;
             var queue:Vector.<AssetReference> = _queue.concat();
-            var numAssets:int = queue.length;
+            var numAssets:int = queue.length-1;
             var numComplete:int = 0;
             var numConnections:int = MathUtil.min(_numConnections, numAssets);
             var assetProgress:Vector.<Number> = new Vector.<Number>(numAssets, true);
