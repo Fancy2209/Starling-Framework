@@ -278,14 +278,14 @@ COMPILE::JS {
         public function set pixelSnapping(value:Boolean):void { _pixelSnapping = value; }
 
         /** The total number of vertices in the mesh. */
-        public function get numVertices():int { return _vertexData.numVertices; }
+        public function get numVertices():int { return _vertexData ? _vertexData.numVertices : 0; }
 
         /** The total number of indices referencing vertices. */
-        public function get numIndices():int { return _indexData.numIndices; }
+        public function get numIndices():int { return _indexData ? _indexData.numIndices : 0; }
 
         /** The total number of triangles in this mesh.
          *  (In other words: the number of indices divided by three.) */
-        public function get numTriangles():int { return _indexData.numTriangles; }
+        public function get numTriangles():int { return _indexData ? _indexData.numTriangles : 0; }
 
         /** The format used to store the vertices. */
         public function get vertexFormat():VertexDataFormat { return _style.vertexFormat; }
