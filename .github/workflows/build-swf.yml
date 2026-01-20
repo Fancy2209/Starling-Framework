@@ -18,7 +18,7 @@ jobs:
         run: |
             npm i -g asconfigc
             cd tests
-            asconfigc --debug=true --sdk=$AIR_HOME
+            asconfigc --debug=true --sdk=$env:AIR_HOME
             cd out
             adl UnitTest-app.xml
           
