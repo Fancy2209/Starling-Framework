@@ -19,6 +19,6 @@ jobs:
             npm i -g asconfigc
             cd tests
             asconfigc --debug=true --sdk=$AIR_HOME
-            cd bin
+            cd out
             adl UnitTest-app.xml
           
