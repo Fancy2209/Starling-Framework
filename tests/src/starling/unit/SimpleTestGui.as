@@ -1,5 +1,6 @@
 package starling.unit
 {
+    import starling.core.Starling;
     import starling.display.Sprite;
     import starling.text.TextField;
     import starling.utils.Align;
@@ -32,6 +33,14 @@ package starling.unit
 
             _logLines = new Sprite();
             addChild(_logLines);
+        }
+
+        override public function onFinished():void
+        {
+            if("nativeApplication" in Starling.current.nativeStage)
+            {
+                Starling.current.nativeStage.nativeApplication.exit((testCount == successCount) ? 0 : 1);
+            }
         }
 
         override public function log(message:String, color:uint=0xffffff):void

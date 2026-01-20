@@ -1,0 +1,24 @@
+name: Compile SWF
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: joshtynjala/setup-adobe-air-action@v2
+        with:
+          air-version: "51.1"
+          accept-license: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+      - name: Compile SWF
+        run: |
+            npm i -g asconfigc
+            cd tests
+            asconfigc --debug=true 
+            cd bin
+            adl UnitTest-app.xml
+          
