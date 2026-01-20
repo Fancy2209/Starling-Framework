@@ -22,7 +22,9 @@ package starling.text
     import starling.textures.TextureSmoothing;
     import starling.utils.Align;
     import starling.utils.StringUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** The BitmapFont class parses bitmap font files and arranges the glyphs
      *  in the form of a text.

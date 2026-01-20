@@ -25,8 +25,7 @@ package starling.textures
     import starling.utils.execute;
 COMPILE::JS
 {
-    import flash.errors.ArgumentError;
-    import flash.errors.Error;
+    import flash.errors.ArgumentError;     import flash.errors.Error;
 }
 
     /** @private
@@ -174,7 +173,9 @@ COMPILE::JS
                 COMPILE::JS 
                 {
                     try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
-                    catch (error:flash.errors.Error)
+                    catch (error:COMPILE::JS { 
+    import flash.errors.ArgumentError;
+}.Error)
                     {
                         if (error.errorID == 3708 || error.errorID == 1069)
                             sAsyncUploadEnabled = false;

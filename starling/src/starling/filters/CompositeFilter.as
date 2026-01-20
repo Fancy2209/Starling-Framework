@@ -149,7 +149,9 @@ import starling.textures.Texture;
 import starling.utils.Color;
 import starling.utils.RenderUtil;
 import starling.utils.StringUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
 class CompositeEffect extends FilterEffect
 {

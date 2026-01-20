@@ -15,7 +15,9 @@ package starling.rendering
 
     import starling.core.Starling;
     import starling.utils.StringUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** Describes the memory layout of VertexData instances, as used for every single vertex.
      *

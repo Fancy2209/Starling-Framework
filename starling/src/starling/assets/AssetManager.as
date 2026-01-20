@@ -1097,7 +1097,9 @@ package starling.assets
 }
 
 import starling.assets.AssetManager;
-    import flash.errors.ArgumentError;
+COMPILE::JS {
+import flash.errors.ArgumentError; 
+}
 
 class AssetPostProcessor
 {

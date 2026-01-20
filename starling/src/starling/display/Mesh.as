@@ -24,7 +24,9 @@ package starling.display
     import starling.utils.MatrixUtil;
     import starling.utils.MeshUtil;
     import starling.utils.execute;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     use namespace starling_internal;
 

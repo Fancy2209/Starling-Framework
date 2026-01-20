@@ -19,7 +19,9 @@ package starling.display
     import starling.textures.Texture;
     import starling.utils.ButtonBehavior;
     import starling.utils.SystemUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** Dispatched when the user triggers the button. Bubbles. */
     [Event(name="triggered", type="starling.events.Event")]

@@ -12,7 +12,9 @@ package starling.textures
 {
     import flash.display3D.Context3DTextureFormat;
     import flash.utils.ByteArray;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** A parser for the ATF data format. */
     public class AtfData

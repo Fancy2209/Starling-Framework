@@ -21,7 +21,7 @@ package starling.geom
 COMPILE::JS
 {
     import flash.errors.Error;
-        import flash.errors.ArgumentError;
+    import flash.errors.ArgumentError;
 }
 
     /** A polygon describes a closed two-dimensional shape bounded by a number of straight

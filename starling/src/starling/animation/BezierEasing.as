@@ -1,7 +1,7 @@
 package starling.animation
 {
 COMPILE::JS { 
-    import flash.errors.ArgumentError; 
+    import flash.errors.ArgumentError;
 }
 
     import starling.errors.AbstractClassError;

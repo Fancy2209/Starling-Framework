@@ -24,7 +24,9 @@ package starling.rendering
     import starling.utils.MatrixUtil;
     import starling.utils.Pool;
     import starling.utils.RectangleUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** The RenderState stores a combination of settings that are currently used for rendering.
      *  This includes modelview and transformation matrices as well as context3D related settings.

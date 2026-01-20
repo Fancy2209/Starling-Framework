@@ -51,7 +51,9 @@ package starling.core
     import starling.utils.Pool;
     import starling.utils.RectangleUtil;
     import starling.utils.SystemUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** Dispatched when a new render context is created. The 'data' property references the context. */
     [Event(name="context3DCreate", type="starling.events.Event")]

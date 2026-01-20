@@ -16,7 +16,9 @@ package starling.textures
 
     import starling.display.Image;
     import starling.utils.StringUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** A texture atlas is a collection of many smaller textures in one big image. This class
      *  is used to access textures from such an atlas.

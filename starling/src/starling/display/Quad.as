@@ -21,7 +21,9 @@ package starling.display
     import starling.styles.MeshStyle;
     import starling.textures.Texture;
     import starling.utils.RectangleUtil;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** A Quad represents a colored and/or textured rectangle.
      *

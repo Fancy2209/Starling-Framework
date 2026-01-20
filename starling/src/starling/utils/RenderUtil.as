@@ -25,7 +25,9 @@ package starling.utils
     import starling.errors.AbstractClassError;
     import starling.textures.Texture;
     import starling.textures.TextureSmoothing;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** A utility class containing methods related to Stage3D and rendering in general. */
     public class RenderUtil

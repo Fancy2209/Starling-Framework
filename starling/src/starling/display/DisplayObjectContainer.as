@@ -24,7 +24,9 @@ package starling.display
     import starling.rendering.Painter;
     import starling.utils.MatrixUtil;
     import starling.utils.Pool;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     use namespace starling_internal;
 

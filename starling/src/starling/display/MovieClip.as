@@ -17,7 +17,9 @@ package starling.display
     import starling.animation.IAnimatable;
     import starling.events.Event;
     import starling.textures.Texture;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** Dispatched whenever the movie has displayed its last frame. */
     [Event(name="complete", type="starling.events.Event")]

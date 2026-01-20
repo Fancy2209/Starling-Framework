@@ -37,7 +37,9 @@ COMPILE::SWF {
     import starling.utils.MatrixUtil;
     import starling.utils.SystemUtil;
     import starling.utils.execute;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     /** <p>A texture stores the information that represents an image. It cannot be added to the
      *  display list directly; instead it has to be mapped onto a display object. In Starling,

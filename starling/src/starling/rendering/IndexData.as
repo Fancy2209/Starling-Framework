@@ -12,7 +12,9 @@ package starling.rendering
 {
     import flash.display3D.Context3D;
     import flash.display3D.IndexBuffer3D;
+COMPILE::JS {
     import flash.errors.EOFError;
+}
     import flash.utils.ByteArray;
     import flash.utils.Endian;
 

@@ -39,7 +39,9 @@ package starling.display
     import starling.utils.Pool;
     import starling.utils.SystemUtil;
     import starling.utils.execute;
+COMPILE::JS {
     import flash.errors.ArgumentError;
+}
 
     use namespace starling_internal;
 
