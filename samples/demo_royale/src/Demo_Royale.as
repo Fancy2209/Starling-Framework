@@ -19,7 +19,6 @@ package
     // This project requires the sources of the "demo_mobile" project. Add them either by
     // referencing the "demo_mobile/src" directory as a "source path", or by copying the files.
     
-    [SWF(width="320", height="480", frameRate="60", backgroundColor="#222222")]
     public class Demo_Royale extends Sprite
     {
         private var _starling:Starling;
