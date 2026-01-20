@@ -37,12 +37,12 @@ package starling.unit
 
         override public function onFinished():void
         {
-                try
-                {
-                    var nativeApp:Class = getDefinitionByName("flash.desktop.NativeApplication") as Class;
-                    nativeApp["nativeApplication"].exit((testCount == successCount) ? 0 : 1);
-                }
-                catch (e:Error) {}
+            try
+            {
+                var nativeApp:Class = getDefinitionByName("flash.desktop.NativeApplication") as Class;
+                nativeApp["nativeApplication"].exit((testCount == successCount) ? 0 : 1);
+            }
+            catch (e:Error) {}
         }
 
         override public function log(message:String, color:uint=0xffffff):void
