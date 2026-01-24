@@ -6,19 +6,20 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
+
       - uses: joshtynjala/setup-adobe-air-action@v2
         with:
           air-version: "51.1"
           accept-license: true
+
       - uses: actions/setup-node@v6
         with:
           node-version: latest
-      - name: Compile SWF
-        run: |
-            npm i -g asconfigc
-            cd tests
-            asconfigc --debug=true --sdk=$env:AIR_HOME
-            cd out
-            adl UnitTest-app.xml
+
+      - name: Install asconfigc and compile swf
+        run: npm i -g asconfigc && cd tests && asconfigc --debug=true --sdk=$env:AIR_HOME
+
+      - name: Run Tests
+        run: cd tests/out && adl UnitTest-app.xml
           

@@ -2,7 +2,6 @@ package starling.unit
 {
     import flash.utils.getDefinitionByName;
 
-    import starling.core.Starling;
     import starling.display.Sprite;
     import starling.text.TextField;
     import starling.utils.Align;
