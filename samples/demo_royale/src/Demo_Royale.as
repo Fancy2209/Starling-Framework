@@ -5,6 +5,9 @@ package
     import flash.system.Capabilities;
     import flash.system.System;
     import flash.utils.setTimeout;
+COMPILE::JS {
+    import flash.utils.Assets;
+}
 
     import starling.assets.AssetManager;
     import starling.core.Starling;
@@ -21,8 +24,12 @@ package
     
     public class Demo_Royale extends Sprite
     {
+        COMPILE::SWF {
+            [Embed(source="../../demo_mobile/assets/textures/1x/background.jpg")]
+            public static const background:Class;
+        }
         private var _starling:Starling;
-        //private var _background:Bitmap;
+        private var _background:Bitmap;
         private var _progressBar:ProgressBar;
 
         public function Demo_Royale()
@@ -116,9 +123,15 @@ package
         {
             // Add background image.
 
-            //_background = new EmbeddedAssets.background();
-            //_background.smoothing = true;
-            //addChild(_background);
+            COMPILE::SWF { 
+                _background = new background();
+            }
+            COMPILE::JS { 
+                _background = new Bitmap(Assets.getBitmapData("assets/textures/1x/background.jpg")); 
+            }
+            _background.smoothing = true;
+            addChild(_background);
+            
 
             // While the assets are loaded, we will display a progress bar.
 
@@ -130,11 +143,11 @@ package
 
         private function removeElements():void
         {
-            //if (_background)
-            //{
-            //    removeChild(_background);
-            //    _background = null;
-            //}
+            if (_background)
+            {
+                removeChild(_background);
+                _background = null;
+            }
 
             if (_progressBar)
             {

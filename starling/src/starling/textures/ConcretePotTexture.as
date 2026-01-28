@@ -161,27 +161,14 @@ COMPILE::JS
         {
             if (sAsyncUploadEnabled)
             {
-                COMPILE::SWF {
                     try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
                     catch (error:Error)
                     {
-                        if (error.errorID == 3708 || error.errorID == 1069)
+                        if (error.hasOwnProperty("errorID") && (error["errorID"] == 3708 || error["errorID"] == 1069))
                             sAsyncUploadEnabled = false;
                         else
                             throw error;
                     }
-                }
-                COMPILE::JS 
-                {
-                    try { base["uploadFromBitmapDataAsync"](source, mipLevel); }
-                    catch (error:Error)
-                    {
-                        if (error.errorID == 3708 || error.errorID == 1069)
-                            sAsyncUploadEnabled = false;
-                        else
-                            throw error;
-                    }
-                }
             }
 
             if (!sAsyncUploadEnabled)

@@ -7,10 +7,16 @@ package
         {
             public function Main()
             {
-                var stage:Stage = new Stage (320, 480, 0x222222, Demo_Royale);
-                stage.frameRate = 60;
-                var content:HTMLDivElement = document.getElementById ("openfl-content") as HTMLDivElement;
-                content.appendChild (stage.element);
+                var manifest:AssetManifest = new AssetManifest ();
+                manifest.addFont ("Ubuntu");
+                manifest.addBitmapData ("assets/textures/1x/background.jpg");
+                
+                AssetLibrary.loadFromManifest (manifest).onComplete (function (library:AssetLibrary):void {	
+                    var stage:Stage = new Stage (320, 480, 0x222222, Demo_Royale);
+                    document.body.appendChild (stage.element);
+                }).onError (function (e:Error):void {
+                    trace (e);
+                });
             }
         }
     }

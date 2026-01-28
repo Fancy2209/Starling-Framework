@@ -85,26 +85,14 @@ COMPILE::JS {
         {
             if (sAsyncUploadEnabled)
             {
-COMPILE::SWF {
                 try { base["uploadFromBitmapDataAsync"](source); }
                 catch (error:Error)
                 {
-                    if (error.errorID == 3708 || error.errorID == 1069)
+                    if (error.hasOwnProperty("errorID") && (error["errorID"] == 3708 || error["errorID"] == 1069))
                         sAsyncUploadEnabled = false; // feature or method not available
                     else
                         throw error;
                 }
-}
-COMPILE::JS {
-                try { base["uploadFromBitmapDataAsync"](source); }
-                catch (error:flash.errors.Error)
-                {
-                    if (error.errorID == 3708 || error.errorID == 1069)
-                        sAsyncUploadEnabled = false; // feature or method not available
-                    else
-                        throw error;
-                }
-}
             }
 
             if (!sAsyncUploadEnabled)
