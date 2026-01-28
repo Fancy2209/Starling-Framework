@@ -5,9 +5,6 @@
 		"output": "bin/Demo_Royale.swf",
 		"source-path": [
 			"src",
-			"../demo_mobile/src",
-			"../demo_mobile/assets",
-			"../demo_mobile/system",
 			"../../starling/src"
 		],
 		"js-library-path": ["${royalelib}/js/libs/XMLJS.swc", "${royalelib}/js/libs/ReflectionJS.swc"],
