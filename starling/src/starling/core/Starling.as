@@ -1100,7 +1100,7 @@ COMPILE::JS {
         {
             if (_supportBrowserZoom != value)
             {
-                _supportBrowserZoom = value;
+                _supportBrowserZoom = (SystemUtil.platform != "WEB") ? value : false;
                 if (contextValid) updateViewPort(true);
                 if (value) _nativeStage.addEventListener(
                     Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false, 0, true);
