@@ -46,9 +46,7 @@ package starling.textures
 
             if (!_disposed)
             {
-                COMPILE::SWF {
-                videoBase.attachCamera(null);
-                }
+                COMPILE::SWF { videoBase.attachCamera(null); }
                 videoBase.attachNetStream(null);
                 _disposed = true;
             }
