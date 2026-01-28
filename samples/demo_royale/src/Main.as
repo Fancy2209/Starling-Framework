@@ -2,6 +2,8 @@ package
 {
     COMPILE::JS {
         import flash.display.Stage;
+        import flash.utils.AssetManifest;
+        import flash.utils.AssetLibrary;
 
         public class Main
         {
