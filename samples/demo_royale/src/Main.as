@@ -1,7 +1,9 @@
 package
 {
-    COMPILE::JS {
+    COMPILE::JS
+    {
         import flash.display.Stage;
+        import flash.utils.Assets;
         import flash.utils.AssetManifest;
         import flash.utils.AssetLibrary;
 
@@ -9,21 +11,24 @@ package
         {
             public function Main()
             {
-                var manifest:AssetManifest = new AssetManifest ();
-                manifest.addFont ("Ubuntu");
-                manifest.addBitmapData ("assets/textures/1x/background.jpg");
-                
-                AssetLibrary.loadFromManifest (manifest).onComplete (function (library:AssetLibrary):void {	
-                    var stage:Stage = new Stage (320, 480, 0x222222, Demo_Royale);
-                    document.body.appendChild (stage.element);
-                }).onError (function (e:Error):void {
-                    trace (e);
-                });
+                var manifest:AssetManifest = new AssetManifest();
+                manifest.addFont("Ubuntu");
+                manifest.addBitmapData("assets/textures/1x/background.jpg");
+
+                AssetLibrary.loadFromManifest(manifest)
+                    .onComplete(function(library:AssetLibrary):void  {
+                            Assets.registerLibrary("default", library);
+                            var stage:Stage = new Stage(320, 480, 0x222222, Demo_Royale);
+                            document.body.appendChild(stage.element);
+                        }).onError(function(e:Error):void {
+                            trace(e);
+                        });
             }
         }
     }
 
-    COMPILE::SWF {
+    COMPILE::SWF
+    {
         import flash.display.Sprite;
 
         [SWF(width="320", height="480", frameRate="60", backgroundColor="#222222")]

@@ -82,6 +82,7 @@ package
         {
             if (_currentScene) return;
             
+            trace(name);
             var sceneClass:Class = getDefinitionByName(name) as Class;
             _currentScene = new sceneClass() as Scene;
             _mainMenu.removeFromParent();

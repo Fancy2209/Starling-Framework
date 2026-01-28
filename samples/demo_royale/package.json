@@ -6,7 +6,7 @@
     "asconfigc": "^1.8.1",
     "cpx": "^1.5.0",
     "http-server": "^14.1.1",
-    "openfl": "^9.5.0"
+    "openfl": "^9.6.0"
   },
   "scripts": {
     "build": "npm run build:prod",

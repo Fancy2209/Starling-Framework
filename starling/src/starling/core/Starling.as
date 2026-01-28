@@ -1103,9 +1103,9 @@ COMPILE::JS {
                 _supportBrowserZoom = (SystemUtil.platform != "WEB") ? value : false;
                 if (contextValid) updateViewPort(true);
                 if (value) _nativeStage.addEventListener(
-                    Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false, 0, true);
+                    "browserZoomChange", onBrowserZoomChange, false, 0, true);
                 else _nativeStage.removeEventListener(
-                    Event.BROWSER_ZOOM_CHANGE, onBrowserZoomChange, false);
+                    "browserZoomChange", onBrowserZoomChange, false);
             }
         }
 

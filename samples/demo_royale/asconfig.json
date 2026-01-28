@@ -10,7 +10,7 @@
 			"../demo_mobile/system",
 			"../../starling/src"
 		],
-		"js-library-path": ["libs/XMLJS.swc"],
+		"js-library-path": ["${royalelib}/js/libs/XMLJS.swc", "${royalelib}/js/libs/ReflectionJS.swc"],
 		"js-external-library-path": ["node_modules/openfl/dist/openfl.swc"],
 		"html-template": "index.template.html"
 	},

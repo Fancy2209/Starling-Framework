@@ -136,8 +136,8 @@ COMPILE::JS {
             // While the assets are loaded, we will display a progress bar.
 
             _progressBar = new ProgressBar(175, 20);
-            _progressBar.x = (stage.width) / 2;
-            _progressBar.y =  stage.height * 0.7;
+            _progressBar.x = (_background.width - _progressBar.width) / 2;
+            _progressBar.y =  _background.height * 0.7;
             addChild(_progressBar);
         }
 
