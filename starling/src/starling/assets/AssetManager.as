@@ -20,6 +20,7 @@ package starling.assets
     import starling.textures.TextureOptions;
     import starling.utils.MathUtil;
     import starling.utils.execute;
+    import starling.utils.compareAsStringCaseinsensitive;
 
     /** Dispatched when all textures have been restored after a context loss. */
     [Event(name="texturesRestored", type="starling.events.Event")]
@@ -725,7 +726,7 @@ package starling.assets
             }
 
             getDictionaryKeys(_assets[assetType], prefix, out);
-            out.sort(Array.CASEINSENSITIVE);
+            out.sort(compareAsStringCaseinsensitive);
             return out;
         }
 
@@ -1043,7 +1044,7 @@ package starling.assets
                     if (name.indexOf(prefix) == 0)
                         out[out.length] = name; // avoid 'push'
 
-                out.sort(Array.CASEINSENSITIVE);
+                //out.sort(Array.CASEINSENSITIVE);
             }
             return out;
         }

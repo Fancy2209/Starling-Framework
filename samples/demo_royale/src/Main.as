@@ -18,7 +18,8 @@ package
                 AssetLibrary.loadFromManifest(manifest)
                     .onComplete(function(library:AssetLibrary):void  {
                             Assets.registerLibrary("default", library);
-                            var stage:Stage = new Stage(320, 480, 0x222222, Demo_Royale);
+                            var stage:Stage = new Stage(320, 480, 0xFF222222, Demo_Royale);
+                            stage.frameRate = 60;
                             document.body.appendChild(stage.element);
                         }).onError(function(e:Error):void {
                             trace(e);

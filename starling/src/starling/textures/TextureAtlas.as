@@ -16,6 +16,7 @@ package starling.textures
 
     import starling.display.Image;
     import starling.utils.StringUtil;
+    import starling.utils.compareAsStringCaseinsensitive;
 COMPILE::JS {
     import flash.errors.ArgumentError;
 }
@@ -197,7 +198,7 @@ COMPILE::JS {
                 // optimization: store sorted list of texture names
                 _subTextureNames = new <String>[];
                 for (name in _subTextures) _subTextureNames[_subTextureNames.length] = name;
-                _subTextureNames.sort(Array.CASEINSENSITIVE);
+                _subTextureNames.sort(compareAsStringCaseinsensitive);
             }
 
             for each (name in _subTextureNames)

@@ -229,7 +229,7 @@ package starling.utils
             for each (var atlas:TextureAtlas in _atlases)
                 atlas.getNames(prefix, out);
             
-            out.sort(Array.CASEINSENSITIVE);
+            out.sort(compareAsStringCaseinsensitive);
             return out;
         }
         
@@ -1236,7 +1236,7 @@ package starling.utils
                 if (name.indexOf(prefix) == 0)
                     out[out.length] = name; // avoid 'push'
 
-            out.sort(Array.CASEINSENSITIVE);
+            //out.sort(Array.CASEINSENSITIVE);
             return out;
         }
         

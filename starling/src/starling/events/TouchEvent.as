@@ -189,7 +189,7 @@ package starling.events
                 for (var i:int=0; i<chainLength; ++i)
                 {
                     var chainElement:EventDispatcher = chain[i] as EventDispatcher;
-                    if (_visitedObjects.indexOf(chainElement) == -1)
+                    if (chainElement && _visitedObjects.indexOf(chainElement) == -1)
                     {
                         var stopPropagation:Boolean = chainElement.invokeEvent(this);
                         _visitedObjects[_visitedObjects.length] = chainElement;

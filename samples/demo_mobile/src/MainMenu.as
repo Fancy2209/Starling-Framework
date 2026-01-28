@@ -66,6 +66,7 @@ package
                 button.x = count % 2 == 0 ? 28 : 167;
                 button.y = 155 + int(count / 2) * 46;
                 button.name = getQualifiedClassName(sceneClass);
+                trace(button.name);
                 addChild(button);
                 
                 if (scenesToCreate.length % 2 != 0 && count % 2 == 1)
