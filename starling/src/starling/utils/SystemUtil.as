@@ -107,11 +107,18 @@ package starling.utils
         }
 
         /** Indicates if the code is executed in an Adobe AIR runtime (true)
-         *  or Flash plugin/projector (false). */
+         *  or Royale/Flash plugin/projector (false). */
         public static function get isAIR():Boolean
         {
             initialize();
             return sAIR;
+        }
+
+        /** Indicates if the code is executed on a browser natively 
+        *   through Apache Royale and OpenFL */
+        public static function get isRoyale():Boolean
+        {
+            return platform == "WEB";
         }
         
         /** Returns the Flash Player/AIR version string. The format of the version number is:
@@ -123,7 +130,7 @@ package starling.utils
         }
 
         /** Returns the three-letter platform string of the current system. These are
-         *  the most common platforms: <code>WIN, MAC, LNX, IOS, AND, QNX</code>. Except for the
+         *  the most common platforms: <code>WIN, MAC, LNX, IOS, AND, WEB, QNX</code>. Except for the
          *  last one, which indicates "Blackberry", all should be self-explanatory.
          *
          *  <p>For debugging purposes, you can also assign a custom value.</p> */
@@ -226,7 +233,7 @@ package starling.utils
          *  or a Smart TV. */
         public static function get isDesktop():Boolean
         {
-            return platform == "WIN" || platform == "MAC" || platform == "LNX";
+            return platform == "WIN" || platform == "MAC" || platform == "LNX" || platform == "WEB";
         }
     }
 }

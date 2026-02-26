@@ -321,7 +321,7 @@ COMPILE::JS {
             stage3D.addEventListener(ErrorEvent.ERROR, onStage3DError, false, 10, true);
 
             var runtimeVersion:int = parseInt(SystemUtil.version.split(",").shift());
-            if (runtimeVersion < 19 && SystemUtil.platform != "WEB")
+            if (runtimeVersion < 19 && !SystemUtil.isRoyale)
             {
                 var runtime:String = SystemUtil.isAIR ? "Adobe AIR" : "Flash Player";
                 stopWithFatalError(
@@ -831,7 +831,10 @@ COMPILE::JS {
             // standard display list is only rendered after calling "context.present()".
             // In such a case, we cannot omit frames if there is any content on the stage.
 
-            if (!_skipUnchangedFrames || _painter.shareContext)
+            // https://github.com/openfl/starling/commits/f987f1c94114354f962b7b7c0b2e340e68ad4bd0/?after=f987f1c94114354f962b7b7c0b2e340e68ad4bd0+244
+            if(SystemUtil.isRoyale && (!_nativeStage.hasOwnProperty("context3D") || _nativeStage["context3D"] == context)) 
+                return true;
+            else if (!_skipUnchangedFrames || _painter.shareContext)
                 return true;
             else if (SystemUtil.isDesktop && profile != Context3DProfile.BASELINE_CONSTRAINED)
                 return false;
@@ -1100,7 +1103,7 @@ COMPILE::JS {
         {
             if (_supportBrowserZoom != value)
             {
-                _supportBrowserZoom = (SystemUtil.platform != "WEB") ? value : false;
+                _supportBrowserZoom = (!SystemUtil.isRoyale) ? value : false;
                 if (contextValid) updateViewPort(true);
                 if (value) _nativeStage.addEventListener(
                     "browserZoomChange", onBrowserZoomChange, false, 0, true);

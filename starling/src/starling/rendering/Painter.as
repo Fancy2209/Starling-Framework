@@ -24,6 +24,7 @@ package starling.rendering
     import flash.utils.Dictionary;
 
     import starling.core.starling_internal;
+    import starling.core.Starling;
     import starling.display.BlendMode;
     import starling.display.DisplayObject;
     import starling.display.Mesh;
@@ -138,6 +139,14 @@ package starling.rendering
             _stage3D.addEventListener(Event.CONTEXT3D_CREATE, onContextCreated, false, 40, true);
             _context = _stage3D.context3D;
             _shareContext = _context && _context.driverInfo != "Disposed";
+            if(SystemUtil.isRoyale)
+            {
+                // OpenFL will never have the Stage3D[0] Context be null
+                // This check is taken from the OpenFL Port of Starling
+                // https://github.com/openfl/starling/blob/f987f1c94114354f962b7b7c0b2e340e68ad4bd0/src/starling/rendering/Painter.hx#L173-L175
+                if(!Starling.current.nativeStage.hasOwnProperty("context3D") || Starling.current.nativeStage["context3D"] == _context) 
+                    _shareContext = false;
+            }
             _backBufferWidth  = _context ? _context.backBufferWidth  : 0;
             _backBufferHeight = _context ? _context.backBufferHeight : 0;
             _backBufferScaleFactor = _pixelSize = 1.0;
