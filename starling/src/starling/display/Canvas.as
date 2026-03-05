@@ -30,19 +30,20 @@ package starling.display
     public class Canvas extends DisplayObjectContainer
     {
         private var _polygons:Vector.<Polygon>;
-        private var _currentPath:Vector.<Number>;
-        private var _currentStroke:Vector.<Number>;
+
         private var _fillColor:uint;
         private var _fillAlpha:Number;
-
+        private var _currentPath:Vector.<Number>;
+        
+        private var _currentStroke:Vector.<Number>;
+        private var _currentStrokeIndex:int; // Keeps track where we are in case we need to append
         private var _isDrawingStroke:Boolean;
-        private var _strokeColor:uint;
-        private var _strokeAlpha:Number;
-        private var _strokeThickness:Number;
+_        private var _strokeThickness:Number;
         private var _strokeScaleMode:String;
         private var _strokeCapStyle:String;
         private var _strokeJointStyle:String;
         private var _strokeMiterLimit:Number;
+        private var _strokeIndex:Number;
         // TODO: Currently using MeshBatches for Strokes in the Canvas since it's a bunch of quads
         // however, round caps and joints use tesselated curves who do add a lot of new geometry
         // so this may not be the best option, need to investigate.
@@ -52,9 +53,11 @@ package starling.display
         public function Canvas()
         {
             _polygons  = new <Polygon>[];
+            _strokeBatches  = new <MeshBatch>[];
             _fillColor = 0xffffff;
             _fillAlpha = 1.0;
             _isDrawingStroke = false;
+            _strokeIndex = 0;
             touchGroup = true;
             
         }
@@ -73,6 +76,12 @@ package starling.display
             _polygons.length = 0;
             if(_currentPath) Pool.putNumberVector(_currentPath);
             if(_currentStroke) Pool.putNumberVector(_currentStroke);
+            for(var i:int = 0; i < _strokeBatches.length; i++)
+            {
+                // Can't reuse after dispose
+                _strokeBatches[i].dispose();
+            }
+            _strokeBatches.length = 0;
             super.dispose();
         }
 
@@ -172,8 +181,8 @@ package starling.display
             else
                 _currentStroke.length = 0;
 
-            _strokeColor = color;
-            _strokeAlpha = alpha;
+            _fillColor = color;
+            _fillAlpha = alpha;
             _strokeThickness = thickness;
             _strokeScaleMode = scaleMode;
             _strokeCapStyle = caps;
@@ -275,7 +284,18 @@ package starling.display
 
         private function drawStroke():void
         {
-            // TODO
+            var lastX;
+            var lastY;
+            for(_currentStrokeIndex; _currentStrokeIndex < _currentStroke.length; _currentStrokeIndex+=2)
+            {
+                lastX = _currentStrokeIndex[_currentStrokeIndex];
+                lastY = _currentStrokeIndex[_currentStrokeIndex+1];
+                if(_currentStrokeIndex > 0)
+                {
+                    Pool.getPoint3D()
+                }
+            }
+            _currentStrokeIndex = _currentStroke.length-1;
         }
 
         /**  Submits a series of IGraphicsData instances for drawing.
@@ -377,11 +397,28 @@ package starling.display
 
             var mesh:Mesh = new Mesh(vertexData, indexData);
 
+            // TODO: This logic technically works without Strokes,
+            // but I am already not very confident about if it's the right approach as is
             if(addToStrokeBatch)
             {
-                if(_strokeBatches.length == 0 || _strokeBatches[_strokeBatches.length-1].vertices >= ) 
-                {
+                if (_strokeBatches.length == 0) 
                     _strokeBatches[_strokeBatches.length] = Pool.getMeshBatch();
+
+                for(var i:int = 0; i < _strokeBatches.length; i++)
+                {
+                    if(_strokeBatches[i].canAddMesh(mesh))
+                    {
+                        _strokeBatches[i].addMesh(mesh);
+                        break;
+                    }
+                    else
+                        if(i == _strokeBatches.length-1 && mesh.numVertices < MeshBatch.MAX_NUM_VERTICES)
+                        {
+                            var batch:MeshBatch = Pool.getMeshBatch();
+                            batch.addMesh(mesh);
+                            _strokeBatches[_strokeBatches.length] = batch;
+                            break;
+                        }
                 }
             } 
             else
