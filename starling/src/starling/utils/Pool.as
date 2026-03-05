@@ -164,11 +164,11 @@ package starling.utils
         /** Retrieves an Vector.<Number> instance from the pool. */
         public static function getNumberVector():Vector.<Number>
         {
-            if (sNumberVectors.length == 0) return <Number>[];
+            if (sNumberVectors.length == 0) return new <Number>[];
             else return sNumberVectors.pop();
         }
 
-        /** Stores an Array instance in the pool (after purging it).
+        /** Stores an Vector.<Number> instance in the pool (after purging it).
          *  Don't keep any references to the array after moving it to the pool! */
         public static function putNumberVector(array:Vector.<Number>):void
         {

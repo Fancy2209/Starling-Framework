@@ -112,7 +112,7 @@ package starling.geom
          *  'x' and 'y' coordinates. */
         public function addVertices(...args):void
         {
-            if(!vertices) _coords = new <Number>[];
+            if(!_coords) _coords = new <Number>[];
             var i:int;
             var numArgs:int = args.length;
             var numCoords:int = _coords.length;
@@ -519,28 +519,22 @@ class ImmutablePolygon extends Polygon
         _frozen = true;
     }
 
-    public function clear():void
+    override public function clear():void
     {
         if (_frozen) throw getImmutableError();
-        else if(_coords) _coords.length = 0;
+        else super.clear();
     }
 
-    public function setVerticesFromArray(vertices:Array):void
+    override public function setVerticesFromArray(vertices:Array):void
     {
         if (_frozen) throw getImmutableError();
-        else {
-            if(_coords) _coords.length = 0;
-            addVertices.apply(this, vertices);
-        }
+        else super.setVerticesFromVector(vertices);
     }
 
-    public function setVerticesFromVector(vertices:Vector.<Number>):void
+    override public function setVerticesFromVector(vertices:Vector.<Number>):void
     {
         if (_frozen) throw getImmutableError();
-        else {
-            if(_coords) _coords.length = 0;
-            _coords = vertices;
-        }
+        else super.setVerticesFromVector(vertices);
     }
 
     override public function addVertices(...args):void
