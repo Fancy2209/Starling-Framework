@@ -220,7 +220,7 @@ package starling.utils
         /** Retrieves a Polygon instance from the pool. 
           * Vertices can be a Vector.<Number> or an Array of Numbers. 
           */
-        public static function getPolygon(vertices:Object):Polygon
+        public static function getPolygon(vertices:Object = null):Polygon
         {
             var polygon:Polygon
 
@@ -229,10 +229,13 @@ package starling.utils
             else
                 polygon = sPolygons.pop();
 
-            if(vertices is Array)
-                polygon.setVerticesFromArray(vertices);
+            if(!vertices)
+                polygon.setVerticesFromArray([]);
+            else if(vertices is Array)
+                polygon.setVerticesFromArray(vertices as Array);
             else
-                polygon.setVerticesFromVector(vertices);
+                polygon.setVerticesFromVector(vertices as Vector.<Number>);
+
             return polygon;
         }
 
@@ -243,7 +246,7 @@ package starling.utils
             if (polygon) 
             {
                 polygon.clear();
-                sPolygon[sPolygon.length] = polygon
+                sPolygons[sPolygons.length] = polygon
             };
         }
     }

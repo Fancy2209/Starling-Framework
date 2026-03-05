@@ -528,7 +528,7 @@ class ImmutablePolygon extends Polygon
     override public function setVerticesFromArray(vertices:Array):void
     {
         if (_frozen) throw getImmutableError();
-        else super.setVerticesFromVector(vertices);
+        else super.setVerticesFromArray(vertices);
     }
 
     override public function setVerticesFromVector(vertices:Vector.<Number>):void
