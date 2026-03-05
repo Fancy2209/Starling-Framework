@@ -16,7 +16,9 @@ package starling.utils
     import flash.geom.Rectangle;
     import flash.geom.Vector3D;
 
+    import starling.display.MeshBatch;
     import starling.errors.AbstractClassError;
+    import starling.geom.Polygon;
 
     /** A simple object pool supporting the most basic utility objects.
      *
@@ -36,6 +38,9 @@ package starling.utils
         private static var sMatrices3D:Vector.<Matrix3D> = new <Matrix3D>[];
         private static var sRectangles:Vector.<Rectangle> = new <Rectangle>[];
         private static var sArrays:Vector.<Array> = new <Array>[];
+        private static var sNumberVectors:Vector.<Vector.<Number>> = new <Vector.<Number>>[];
+        private static var sMeshBatches:Vector.<MeshBatch> = new <MeshBatch>[];
+        private static var sPolygons:Vector.<Polygon> = new <Polygon>[];
 
         /** @private */
         public function Pool() { throw new AbstractClassError(); }
@@ -154,6 +159,92 @@ package starling.utils
         {
             array.length = 0;
             sArrays[sArrays.length] = array;
+        }
+
+        /** Retrieves an Vector.<Number> instance from the pool. */
+        public static function getNumberVector():Vector.<Number>
+        {
+            if (sNumberVectors.length == 0) return <Number>[];
+            else return sNumberVectors.pop();
+        }
+
+        /** Stores an Array instance in the pool (after purging it).
+         *  Don't keep any references to the array after moving it to the pool! */
+        public static function putNumberVector(array:Vector.<Number>):void
+        {
+            array.length = 0;
+            sNumberVectors[sNumberVectors.length] = array;
+        }
+
+        /** Retrieves a MeshBatch instance from the pool. */
+        public static function getMeshBatch():MeshBatch
+        {
+            if (sMeshBatches.length == 0) return new MeshBatch();
+            else
+            {
+                var meshBatch:MeshBatch = sMeshBatches.pop();
+                return meshBatch;
+            }
+        }
+
+        /** Stores a MeshBatch instance in the pool.
+         *  Don't keep any references to the object after moving it to the pool!
+         *  NOTE: This WILL dispose the texture, filter and mask, 
+         *  so make sure to set those properties to null if you do not desire that */
+        public static function putMeshBatch(meshBatch:MeshBatch):void
+        {
+            if (meshBatch)
+            {
+                meshBatch.clear();
+                if(meshBatch.texture)
+                {
+                    meshBatch.texture.dispose();
+                    meshBatch.texture = null;
+                } 
+                if(meshBatch.filter)
+                {
+                    meshBatch.filter.dispose();
+                    meshBatch.filter = null;
+                } 
+                if(meshBatch.mask)
+                {
+                    meshBatch.mask.dispose();
+                    meshBatch.mask = null;
+                }
+                if(meshBatch.is3D) meshBatch.transformationMatrix3D.identity();
+                else meshBatch.transformationMatrix3D.identity();
+                sMeshBatches[sMeshBatches.length] = meshBatch;
+            }
+        }
+
+        /** Retrieves a Polygon instance from the pool. 
+          * Vertices can be a Vector.<Number> or an Array of Numbers. 
+          */
+        public static function getPolygon(vertices:Object):Polygon
+        {
+            var polygon:Polygon
+
+            if (sPolygons.length == 0)
+                polygon = new Polygon();
+            else
+                polygon = sPolygons.pop();
+
+            if(vertices is Array)
+                polygon.setVerticesFromArray(vertices);
+            else
+                polygon.setVerticesFromVector(vertices);
+            return polygon;
+        }
+
+        /** Stores a Polygon instance in the pool.
+         *  Don't keep any references to the object after moving it to the pool! */
+        public static function putPolygon(polygon:Polygon):void
+        {
+            if (polygon) 
+            {
+                polygon.clear();
+                sPolygon[sPolygon.length] = polygon
+            };
         }
     }
 }

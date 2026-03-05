@@ -47,7 +47,9 @@ package starling.geom
          */
         public function Polygon(vertices:Array=null)
         {
-            _coords = new <Number>[];
+            // Don't make _coords here
+            // so fromVector doesn't make an empty vector allocate for no reason
+            // instead only allocate it at addVertices
             addVertices.apply(this, vertices);
         }
 
@@ -55,12 +57,35 @@ package starling.geom
         public function clone():Polygon
         {
             var clone:Polygon = new Polygon();
-            var numCoords:int = _coords.length;
+            if(_coords)
+            {
+                var numCoords:int = _coords.length;
 
-            for (var i:int=0; i<numCoords; ++i)
-                clone._coords[i] = _coords[i];
+                for (var i:int=0; i<numCoords; ++i)
+                    clone._coords[i] = _coords[i];
+            }
 
             return clone;
+        }
+
+        /** Clears the vertices of the polygon. */
+        public function clear():void
+        {
+            if(_coords) _coords.length = 0;
+        }
+
+        /** Replaces the vertices of this polygon with the contents of the vertices array */
+        public function setVerticesFromArray(vertices:Array):void
+        {
+            if(_coords) _coords.length = 0;
+            addVertices.apply(this, vertices);
+        }
+
+        /** Replaces the vertices of this polygon with the contents of the vertices vector */
+        public function setVerticesFromVector(vertices:Vector.<Number>):void
+        {
+            if(_coords) _coords.length = 0;
+            _coords = vertices;
         }
 
         /** Reverses the order of the vertices. Note that some methods of the Polygon class
@@ -87,6 +112,7 @@ package starling.geom
          *  'x' and 'y' coordinates. */
         public function addVertices(...args):void
         {
+            if(!vertices) _coords = new <Number>[];
             var i:int;
             var numArgs:int = args.length;
             var numCoords:int = _coords.length;
@@ -491,6 +517,30 @@ class ImmutablePolygon extends Polygon
     {
         super(vertices);
         _frozen = true;
+    }
+
+    public function clear():void
+    {
+        if (_frozen) throw getImmutableError();
+        else if(_coords) _coords.length = 0;
+    }
+
+    public function setVerticesFromArray(vertices:Array):void
+    {
+        if (_frozen) throw getImmutableError();
+        else {
+            if(_coords) _coords.length = 0;
+            addVertices.apply(this, vertices);
+        }
+    }
+
+    public function setVerticesFromVector(vertices:Vector.<Number>):void
+    {
+        if (_frozen) throw getImmutableError();
+        else {
+            if(_coords) _coords.length = 0;
+            _coords = vertices;
+        }
     }
 
     override public function addVertices(...args):void

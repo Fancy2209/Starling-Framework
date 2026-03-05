@@ -31,16 +31,30 @@ package starling.display
     {
         private var _polygons:Vector.<Polygon>;
         private var _currentPath:Vector.<Number>;
+        private var _currentStroke:Vector.<Number>;
         private var _fillColor:uint;
         private var _fillAlpha:Number;
+
+        private var _isDrawingStroke:Boolean;
+        private var _strokeColor:uint;
+        private var _strokeAlpha:Number;
+        private var _strokeThickness:Number;
+        private var _strokeScaleMode:String;
+        private var _strokeCapStyle:String;
+        private var _strokeJointStyle:String;
+        private var _strokeMiterLimit:Number;
+        // TODO: Currently using MeshBatches for Strokes in the Canvas since it's a bunch of quads
+        // however, round caps and joints use tesselated curves who do add a lot of new geometry
+        // so this may not be the best option, need to investigate.
+        private var _strokeBatches:Vector.<MeshBatch>;
 
         /** Creates a new (empty) Canvas. Call one or more of the 'draw' methods to add content. */
         public function Canvas()
         {
             _polygons  = new <Polygon>[];
-            _currentPath = new <Number>[];
             _fillColor = 0xffffff;
             _fillAlpha = 1.0;
+            _isDrawingStroke = false;
             touchGroup = true;
             
         }
@@ -57,7 +71,8 @@ package starling.display
         public override function dispose():void
         {
             _polygons.length = 0;
-            _currentPath.length = 0;
+            if(_currentPath) Pool.putNumberVector(_currentPath);
+            if(_currentStroke) Pool.putNumberVector(_currentStroke);
             super.dispose();
         }
 
@@ -121,6 +136,14 @@ package starling.display
          *  (such as <code>drawCircle()</code>) will use. */
         public function beginFill(color:uint=0xffffff, alpha:Number=1.0):void
         {
+            _isDrawingStroke = false;
+            if (!_currentPath || _currentPath ==  _currentStroke)
+            {
+                Pool.putNumberVector(_currentStroke);
+                _currentPath = Pool.getNumberVector();
+            }
+            else
+                _currentPath.length = 0;
             closeCurrentPathIfNeeded();
             _fillColor = color;
             _fillAlpha = alpha;
@@ -132,6 +155,30 @@ package starling.display
             closeCurrentPathIfNeeded();
             _fillColor = 0xffffff;
             _fillAlpha = 1.0;
+        }
+
+        public function lineStyle(thickness:Number, color:uint = 0, alpha:Number = 1.0, scaleMode:String = "normal", caps:String = "round", joints:String = "round", miterLimit:Number = 3):void
+        {
+            // TODO: Should these be pooled? I am getting lost in the pools?
+            _isDrawingStroke = true;
+            if(!_currentStroke)
+                _currentStroke = Pool.getNumberVector();
+            
+            if (_currentPath !=  _currentStroke)
+            {
+                Pool.putNumberVector(_currentPath)
+                _currentPath = _currentStroke;
+            }
+            else
+                _currentStroke.length = 0;
+
+            _strokeColor = color;
+            _strokeAlpha = alpha;
+            _strokeThickness = thickness;
+            _strokeScaleMode = scaleMode;
+            _strokeCapStyle = caps;
+            _strokeJointStyle = joints;
+            _strokeMiterLimit = miterLimit;
         }
 
         /** Moves the current drawing position to (x, y).
@@ -203,6 +250,11 @@ package starling.display
         /** Closes the current path if it contains an unfinished polygon. */
         private function closeCurrentPathIfNeeded():void
         {
+            if(_isDrawingStroke)
+            {
+                drawStroke(); 
+                return;
+            }
             if (_currentPath.length < 6) // fewer than 3 points -> nothing meaningful to close
                 return;
 
@@ -219,6 +271,11 @@ package starling.display
 
             // Now draw and reset the path ('drawPathIfClosed' clears '_currentPath').
             drawPathIfClosed();
+        }
+
+        private function drawStroke():void
+        {
+            // TODO
         }
 
         /**  Submits a series of IGraphicsData instances for drawing.
@@ -290,12 +347,25 @@ package starling.display
         public function clear():void
         {
             removeChildren(0, -1, true);
+            // Store batch objects for next time
+            // TODO: Is this a good idea?
+            for(var i:int = 0; i < _strokeBatches.length; i++)
+            {
+                Pool.putMeshBatch(_strokeBatches[i]);
+            }
             _polygons.length = 0;
             _currentPath.length = 0;
+            _currentStroke.length = 0;
+            _strokeBatches.length = 0;
         }
 
         /** Draws an arbitrary polygon. */
         public function drawPolygon(polygon:Polygon):void
+        {
+            drawPolygonInternal(polygon, false);
+        }
+
+        private function drawPolygonInternal(polygon:Polygon, addToStrokeBatch:Boolean):void
         {
             var vertexData:VertexData = new VertexData();
             var indexData:IndexData = new IndexData(polygon.numTriangles * 3);
@@ -305,7 +375,17 @@ package starling.display
 
             vertexData.colorize("color", _fillColor, _fillAlpha);
 
-            addChild(new Mesh(vertexData, indexData));
+            var mesh:Mesh = new Mesh(vertexData, indexData);
+
+            if(addToStrokeBatch)
+            {
+                if(_strokeBatches.length == 0 || _strokeBatches[_strokeBatches.length-1].vertices >= ) 
+                {
+                    _strokeBatches[_strokeBatches.length] = Pool.getMeshBatch();
+                }
+            } 
+            else
+                addChild(mesh);
             _polygons[_polygons.length] = polygon;
         }
 

@@ -62,6 +62,39 @@ package starling.utils
      */
     public final class Earcut
     {
+        // TODO: Research about using a free-list pool instead
+        private static var sNodes:Vector.<Node> = new <Node>[];
+
+        /** Retrieves a Node instance from the pool. */
+        private static function getNode(i:Number, x:Number, y:Number):Node
+        {
+            if (sNodes.length == 0) return new Node(i, x, y);
+            else
+            {
+                var node:Node = sNodes.pop();
+                node.i = i
+                node.x = x
+                node.y = y
+                return node;
+            }
+        }
+
+        /** Stores a Node instance in the pool.
+         *  Don't keep any references to the object after moving it to the pool! */
+        private static function putNode(node:Node):void
+        {
+            if (node)
+            {
+                node.prev = null;
+                node.next = null;
+                node.z = 0;
+                node.prevZ = null;
+                node.nextZ = null;
+                node.steiner = false;
+                sNodes[sNodes.length] = node
+            };
+        }
+
         /**
          * Triangulate an outline.
          *
@@ -681,10 +714,11 @@ package starling.utils
 
             if (p.prevZ) p.prevZ.nextZ = p.nextZ;
             if (p.nextZ) p.nextZ.prevZ = p.prevZ;
+            putNode(p);
         }
 
       private static function createNode(i:Number, x:Number, y:Number):Node {
-            return new Node(i, x, y);
+            return getNode(i, x, y);
         }
 
         /**
