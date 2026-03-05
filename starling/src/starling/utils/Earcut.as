@@ -63,7 +63,7 @@ package starling.utils
     public final class Earcut
     {
         // TODO: Research about using a free-list pool instead
-        private static var sNodes:Vector.<Node> = new <Node>[];
+        private static var sNodes:Vector.<Node> = new Vector.<Node>();
 
         /** Retrieves a Node instance from the pool. */
         private static function getNode(i:Number, x:Number, y:Number):Node
