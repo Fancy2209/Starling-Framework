@@ -17,6 +17,7 @@ package starling.display
     import flash.display.GraphicsPathCommand;
     import flash.display.GraphicsEndFill;
     import flash.geom.Point;
+    import flash.geom.Vector3D;
 
     import starling.geom.Polygon;
     import starling.rendering.IndexData;
@@ -282,19 +283,67 @@ _        private var _strokeThickness:Number;
             drawPathIfClosed();
         }
 
+        private var strokeStartX:Number = 0;
+        private var strokeStartY:Number = 0;
+        private var strokeLastDeltaX:Number = 0;
+        private var strokeLastDeltaY:Number = 0;
         private function drawStroke():void
         {
-            var lastX;
-            var lastY;
+
+            var deltaPoint:Vector3D = Pool.getPoint3D();
+            // Can't pool polys, we use them for hitTest()
+            //var poly:Polygon = Pool.getPolygon();
+            var endX:Number = 0;
+            var endY:Number = 0;
+            var deltaX:Number = 0;
+            var deltaY:Number = 0;
+            var thicknessX:Number = (_strokeScaleMode == "normal" || _strokeScaleMode == "horizontal") 
+            ? (_strokeThickness/2)  
+            : (_strokeThickness/2) / scaleX;
+            var thicknessY:Number = (_strokeScaleMode == "normal" || _strokeScaleMode == "vertical") 
+            ? (_strokeThickness/2) 
+            : (_strokeThickness/2) / scaleY;
+            
             for(_currentStrokeIndex; _currentStrokeIndex < _currentStroke.length; _currentStrokeIndex+=2)
             {
-                lastX = _currentStrokeIndex[_currentStrokeIndex];
-                lastY = _currentStrokeIndex[_currentStrokeIndex+1];
+                // poly.clear();
                 if(_currentStrokeIndex > 0)
                 {
-                    Pool.getPoint3D()
+                    var poly:Polygon = new Polygon();
+                    endX = _currentStroke[_currentStrokeIndex] 
+                    endY = _currentStroke[_currentStrokeIndex+1]
+
+                    deltaPoint.x = endX - strokeStartX;
+                    deltaPoint.y = endY - strokeStartY;
+                    deltaPoint.normalize();
+                    normalX = deltaPoint.y;
+                    normalY = -deltaPoint.x;
+                    
+                    // Upper line from start to end 
+                    poly.addVertices(strokeStartX + thicknessX * normalX);
+                    poly.addVertices(strokeStartY + thicknessY * normalY);
+                    poly.addVertices(endX + thicknessX * normalX);
+                    poly.addVertices(endY + thicknessY * normalY);
+                    
+                    // Bottom line from end to start // TODO: curveTo if round caps
+                    poly.addVertices(endX - thicknessX * normalX);
+                    poly.addVertices(endY - thicknessY * normalY);
+                    poly.addVertices(strokeStartX - thicknessX * normalX);
+                    poly.addVertices(strokeStartY - thicknessY * normalY);
+                    
+                    // bottom start to upper start // TODO: curveTo if round caps
+                    poly.addVertices(strokeStartX + thicknessX * normalX);
+                    poly.addVertices(strokeStartY + thicknessY * normalY);
+                    drawPolygonInternal(poly, true);
+                    
                 }
+                strokeStartX = endX;
+                strokeStartY = endY;
+                strokeLastDeltaX = deltaPoint.x;
+                strokeLastDeltaY = deltaPoint.y;
             }
+            Pool.putPoint3D(deltaPoint);
+            //var poly:Polygon = Pool.putPolygon();
             _currentStrokeIndex = _currentStroke.length-1;
         }
 

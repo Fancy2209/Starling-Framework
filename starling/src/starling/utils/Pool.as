@@ -222,21 +222,19 @@ package starling.utils
           */
         public static function getPolygon(vertices:Object = null):Polygon
         {
-            var polygon:Polygon
-
             if (sPolygons.length == 0)
-                polygon = new Polygon();
+                return new Polygon();
             else
-                polygon = sPolygons.pop();
+            {
+                var polygon:Polygon = sPolygons.pop();
 
-            if(!vertices)
-                polygon.setVerticesFromArray([]);
-            else if(vertices is Array)
-                polygon.setVerticesFromArray(vertices as Array);
-            else
-                polygon.setVerticesFromVector(vertices as Vector.<Number>);
+                if(vertices is Array)
+                    polygon.setVerticesFromArray(vertices as Array);
+                else
+                    polygon.setVerticesFromVector(vertices as Vector.<Number>);
 
-            return polygon;
+                return polygon;
+            }
         }
 
         /** Stores a Polygon instance in the pool.
