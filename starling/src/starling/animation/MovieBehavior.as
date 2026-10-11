@@ -435,7 +435,7 @@ class MovieFrame
 
     public function setAction(action:Function, id:int):void
     {
-        if (action == null) actions.removeAt(id);
+        if (action == null && _actions.length > id) _actions.removeAt(id);
         if (_actions == null) _actions = new <Function>[];
         if (id > _actions.length) _actions.length = id;
         if (_actions[id] != action) _actions[id] = action;
