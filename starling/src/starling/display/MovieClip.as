@@ -55,7 +55,7 @@ package starling.display
             if (textures.length > 0)
             {
                 _textures = new <Texture>[];
-                _textures.concat(textures);
+                _textures = _textures.concat(textures);
                 super(_textures[0]);
                 _behavior = new MovieBehavior(this, onFrameChanged, fps);
                 _behavior.numFrames = textures.length;
