@@ -131,6 +131,11 @@ package starling.animation
             getFrameAt(index).addAction(action);
         }
 
+        public function setFrameAction(index:int, action:Function, frameIndex:int):void
+        {
+            getFrameAt(index).setAction(action, frameIndex);
+        }
+
         public function removeFrameAction(index:int, action:Function):void
         {
             getFrameAt(index).removeAction(action);
@@ -330,7 +335,7 @@ package starling.animation
             value = MathUtil.clamp(value, 0, totalTime);
 
             var prevFrame:int = _currentFrame;
-            currentFrame = value / _defaultFrameDuration;
+            currentFrame = value / _frames[prevFrame].duration;
             _currentTime = value;
 
             if (prevFrame != _currentFrame)
@@ -373,7 +378,7 @@ package starling.animation
             value = MathUtil.clamp(value, 0, numFrames-1);
 
             var prevFrame:int = _currentFrame;
-            _currentTime = _defaultFrameDuration * value;
+            _currentTime = _frames[prevFrame].duration * value;
             _currentFrame = value;
 
             if (prevFrame != _currentFrame)
@@ -428,6 +433,13 @@ class MovieFrame
         if (_actions.indexOf(action) == -1) _actions[_actions.length] = action;
     }
 
+    public function setAction(action:Function, id:int):void
+    {
+        if (action == null) actions.removeAt(id);
+        if (_actions == null) _actions = new <Function>[];
+        if (_actions[id] != action) _actions[id] = action;
+    }
+
     public function removeAction(action:Function):void
     {
         if (_actions)
@@ -455,7 +467,6 @@ class MovieFrame
             {
                 var action:Function = _actions[i];
                 var numArgs:int = action.length;
-                trace("MovieBehavior::executeActions", target["currentFrame"], frameID);
 
                 if (numArgs == 0) action();
                 else if (numArgs == 1) action(target);

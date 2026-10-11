@@ -54,8 +54,9 @@ package starling.display
         {
             if (textures.length > 0)
             {
-                super(textures[0]);
-                _textures = textures;
+                _textures = new <Texture>[];
+                _textures.concat(textures);
+                super(_textures[0]);
                 _behavior = new MovieBehavior(this, onFrameChanged, fps);
                 _behavior.numFrames = textures.length;
                 _behavior.addEventListener(Event.COMPLETE, onComplete);
@@ -73,7 +74,6 @@ package starling.display
 
         private function onFrameChanged(frameIndex:int):void
         {
-            trace("onFrameChanged", frameIndex);
             texture = _textures[frameIndex];
         }
 
@@ -166,7 +166,7 @@ package starling.display
         public function setFrameAction(frameID:int, action:Function):void
         {
             if(action)
-                _behavior.addFrameAction(frameID, action);
+                _behavior.setFrameAction(frameID, action, 0);
             else
                 _behavior.removeFrameAction(frameID, action);
         }
